@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	.container
+		div.row-fluid.jumbotron#splash
+			h2 #{title}
+			p #{subtitle}
+			if username
+				p Welcome #{username}
+				a.btn.btn-default(href='/logout') Log Out
+			else
+				a.btn.btn-default(href='/auth/google') Login with Google
+							
+block modals
+
+block pageScripts

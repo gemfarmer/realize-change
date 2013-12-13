@@ -1,0 +1,68 @@
+!!! 5
+html
+	head
+		title= title
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='description', content='')
+		meta(name='author', content='')
+		link(href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css', rel='stylesheet', media='screen')
+		link(href='css/main.css', rel='stylesheet', media='screen')
+		link(href='css/change.css', rel='stylesheet', media='screen')
+		link(href='css/index.css', rel='stylesheet', media='screen')  
+		link(href='css/mission.css', rel='stylesheet', media='screen')
+		link(href='css/font-awesome.min.css', rel='stylesheet', media='screen')
+		
+	body
+		div.navbar.navbar-default.navbar-fixed-top
+			.container-fluid
+				div.navbar-header
+					a.navbar-brand(href='/') #{title}
+					button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+				div.navbar-collapse.collapse#navbar-main
+					ul.nav.navbar-nav
+						each link in links
+							- var isActive = (link.path == current ? 'active' : '')
+							li(class = '#{isActive}')
+								a(href='#{link.path}')= link.label
+					div.pull-right
+						ul.nav.navbar-nav.navbar-right
+							if username
+								li.dropdown
+									a.dropdown-toggle(href='#', data-toggle='dropdown')
+										| Hi #{username}!&nbsp;
+										b.caret
+									ul.dropdown-menu
+										li
+											a(href='/logout') Log Out
+
+										//- if user.role==='admin'
+										//- 	li
+										//- 		a(href='/admin') Admin Section
+							else
+								li.dropdown
+									a.dropdown-toggle(href='#', data-toggle='dropdown')
+										| Login
+										b.caret
+									ul.dropdown-menu
+										li
+											a(href='/auth/google') with Google
+					
+		div.container-fluid  
+			block content
+			//- div.navbar.navbar-default.navbar-fixed-bottom
+			//- 	.container
+			//- 		p.text-muted.credit Developed in the great state of Colorado
+				
+		script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+		script(src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js")
+		script(src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js")
+		//- script(type="text/javascript", src="https://www.google.com/jsapi?key=AIzaSyB_e3Hr9YXDi4P4JLX53yZOIr1Osz7L-_U")
+		//- script(type="text/javascript", src="https://www.google.com/jsapi")
+
+		script(src="js/lib/seeanswers.js")
+		script(src='js/lib/answers.js')
+
