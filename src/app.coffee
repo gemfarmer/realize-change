@@ -14,7 +14,7 @@ mongoose = require('mongoose');
 config = require('./config');
 user = require('./Models/User')
 passport = require('passport');
-
+GlobalAnswer = require('./Models/answers')
 FacebookStrategy = require('passport-facebook').Strategy;
 TwitterStrategy = require('passport-twitter').Strategy;
 GoogleStrategy = require('passport-google').Strategy;
@@ -137,11 +137,11 @@ app.get '/error', (req,res) ->
 	res.send(401,'{err: please log in!}');
 
 
+
 # answers to initial question
 app.get '/sendanswer', answer_requests.sendanswer
 # get answers from database
 app.get '/getanswers', answer_requests.getanswers
-
 
 # run server
 http.createServer(app).listen app.get('port'), () ->
