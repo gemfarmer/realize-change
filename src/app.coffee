@@ -12,7 +12,7 @@ app = express();
 global.app = app;
 mongoose = require('mongoose');
 config = require('./config');
-user = require('./Models/User').user;
+user = require('./Models/User')
 passport = require('passport');
 
 FacebookStrategy = require('passport-facebook').Strategy;

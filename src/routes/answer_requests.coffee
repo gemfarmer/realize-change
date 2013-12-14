@@ -1,7 +1,7 @@
 mongoose = require('mongoose');
 
-GlobalAnswer = require('./../Models/User').GlobalAnswerSchema;
-GlobalQuestion = require('./../Models/User').GlobalQuestionSchema;
+GlobalAnswer = require('./../Models/answers').GlobalAnswerSchema;
+GlobalQuestion = require('./../Models/answers').GlobalQuestionSchema;
 
 
 # answers to initial question
