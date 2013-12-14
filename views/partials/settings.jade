@@ -1,18 +1,47 @@
 extends ../layout
 
 block content
-	.container#partialHeader Account Settings
-		div.row.jumbotron#answers
-			.fieldset
-				form#answerPrompt
-					p.lead What are your dreams for the future?
-					textarea#answerFuture.form-group(type='email', cols="100" name='answerFuture', required, placeholder='Voice your dreams...').col-xs-12
-					br
-					p.lead What goals do you think we should be working on to make a better world?
-					textarea#answerGoals.form-group(type='email', cols="100" name='answerGoals', required, placeholder='Voice your dreams...').col-xs-12
-					br
-					button#addAnswer.btn.btn-primary.pull-right Submit Answers
-					a#seeAnswers.btn.btn-default.pull-right(href='/seeanswers') See All Answers
-					div#success.alert-success.alert.hide Your question has been successfully submitted. Ask another question!
+	//- .container#partialHeader Account Settings
+	//- 	div.row.jumbotron#answers
+	//- 		.fieldset
+	//- 			form#answerPrompt
+	//- 				p.lead What are your dreams for the future?
+	//- 				textarea#answerFuture.form-group(type='email', cols="100" name='answerFuture', required, placeholder='Voice your dreams...').col-xs-12
+	//- 				br
+	//- 				p.lead What goals do you think we should be working on to make a better world?
+	//- 				textarea#answerGoals.form-group(type='email', cols="100" name='answerGoals', required, placeholder='Voice your dreams...').col-xs-12
+	//- 				br
+	//- 				button#addAnswer.btn.btn-primary.pull-right Submit Answers
+	//- 				a#seeAnswers.btn.btn-default.pull-right(href='/seeanswers') See All Answers
+	//- 				div#success.alert-success.alert.hide Your question has been successfully submitted. Ask another question!
 
-			
+	//- 	country, state/province, city, ethnicity, age, gender,
+	.container
+		.lightbox-body
+			.fieldset
+				form#demographics
+					label(for="age") Age :
+					select(name="age") Your Age
+						option(value="12-17") 12-17
+						option(value="18-25") 18-25
+						option(value="26-34") 26-34
+						option(value="35-49") 35-49
+		
+
+					br
+					label(for="country") Country:
+					input#country(name="country")
+					br
+					label(for="education") Education:
+					input#education(name="education")
+					br
+					label(for="ethnicity") Ethnicity :
+					input#ethnicity(name="ethnicity")
+					br
+					label(for="gender") Gender :
+					input#gender(name="gender")
+					br
+					
+
+					button.btn.btn-default(type='button') Close
+					button.btn.btn-primary.btn-submit(type='submit') Submit	

@@ -3,7 +3,7 @@ mongoose = require('mongoose');
 GlobalAnswerSchema = new mongoose.Schema({
 	answerFuture: String
 	answerGoals: String
-	votes: Number
+	votes: {type: Number, default: 0}
 });
  
 

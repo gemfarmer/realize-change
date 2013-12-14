@@ -15,10 +15,17 @@ $ ->
 	$('#moreToRank').on 'click', (e) ->
 		e.preventDefault()
 		addAnswersToRank({randomize: true, future: false, goals: true})
-	$('.vote').on 'click', (e) ->
-		e.preventDefault()
-		currentId = $(this).attr('id');
-		console.log(currentId)
+		# get vote ID and send to server
+	$(document).on 'click',".vote", (e) ->
+		e.preventDefault()	
+		currentId = $(this).data('id');
+		$.get "/upvote",{currentId:currentId},(err,data) ->
+			console.log(data)
+
+
+
+
+
 
 		
 	

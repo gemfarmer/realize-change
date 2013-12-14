@@ -28,11 +28,15 @@
         goals: true
       });
     });
-    return $('.vote').on('click', function(e) {
+    return $(document).on('click', ".vote", function(e) {
       var currentId;
       e.preventDefault();
-      currentId = $(this).attr('id');
-      return console.log(currentId);
+      currentId = $(this).data('id');
+      return $.get("/upvote", {
+        currentId: currentId
+      }, function(err, data) {
+        return console.log(data);
+      });
     });
   });
 

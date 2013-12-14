@@ -1,0 +1,13 @@
+button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#myModal')
+  | Launch demo modal
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#myModalLabel.modal-title Modal title
+          .modal-body
+            | ...
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button') Save changes

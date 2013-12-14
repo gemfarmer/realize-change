@@ -4,7 +4,7 @@ config = require('../config');
 console.log(config);
 
 UserSchema = new mongoose.Schema({
-	name: String,
+	name: String
 	email: {type: String, lowercase: true }
 	answers: { 
 		answerFuture: String
@@ -18,10 +18,9 @@ UserSchema = new mongoose.Schema({
 	location: String
 	demographics: {
 		country: String
-		state: String
-		city: String
+		education: String
 		ethnicity: String
-		age: Number
+		age: String
 		gender: String
 	}
 

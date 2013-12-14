@@ -4,3 +4,15 @@
 #partialHeader{
 	margin-top: 100px;
 }
+.lightbox-body{
+	margin:100px;
+	font-size: 20px;
+}
+label {	
+	width: 100px;
+	
+}
+.lightbox-footer{
+	margin-top:20px;
+}
+
