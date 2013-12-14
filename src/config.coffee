@@ -2,8 +2,8 @@ config = {
 	production:
 		{
 			google: {
-				returnURL: 'http://realizechange.herokuapp.com/auth/google/callback',
-				realm: 'http://realizechange.herokuapp.com/'
+				returnURL: 'http://realize-change-now.herokuapp.com/auth/google/callback',
+				realm: 'http://realize-change-now.herokuapp.com/'
 			},
 			twitter: {
 
