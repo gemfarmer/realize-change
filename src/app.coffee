@@ -13,8 +13,6 @@ global.app = app;
 mongoose = require('mongoose');
 config = require('./config');
 user = require('./Models/User').user;
-GlobalAnswer = require('./Models/User').GlobalAnswerSchema;
-GlobalQuestion = require('./Models/User').GlobalQuestionSchema;
 passport = require('passport');
 
 FacebookStrategy = require('passport-facebook').Strategy;
