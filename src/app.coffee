@@ -119,6 +119,8 @@ ensureAuthenticated = (req, res, next) ->
 
 # user routes
 app.get('/', routes.index);
+app.get '/settings', (req, res) ->
+	res.render 'partials/settings'
 # app.get('/partials/:name', ensureAuthenticated, routes.partials);
 
 app.get('/answers', routes.answers)
