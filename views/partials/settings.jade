@@ -21,32 +21,24 @@ block content
 			.fieldset
 				form#demographics
 					label(for="age") Age :
-						.btn-group
-							button.btn.btn-default.dropdown-toggle(type="button" data-toggle="dropdown") Your Age
-							ul.dropdown-menu  
-								li 
-									a 12-17
-								li 
-									a 17-25
-								li 
-									a 25-34
-								li  
-									a 34-40
+					select(name="age") Your Age
+						option(value="12-17") 12-17
+						option(value="18-25") 18-25
+						option(value="26-34") 26-34
+						option(value="35-49") 35-49
+		
 
 					br
 					label(for="country") Country:
-						input#country
-					br
-					label(for="city") City :
-						input#city
+					input#country(name="country")
 					br
 					label(for="ethnicity") Ethnicity :
-						input#ethncity
+					input#ethnicity(name="ethnicity")
 					br
 					label(for="gender") Gender :
-						input#gender
+					input#gender(name="gender")
 					br
 					
-			.lightbox-footer
-				button.btn.btn-default(type='button') Close
-				button.btn.btn-primary(type='button') Save changes	
+
+					button.btn.btn-default(type='button') Close
+					button.btn.btn-primary.btn-submit(type='submit') Submit	

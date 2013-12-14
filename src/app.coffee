@@ -6,6 +6,7 @@ express = require('express');
 routes = require('./routes');
 api = require('./routes/api');
 answer_requests = require('./routes/answer_requests');
+account_settings = require('./routes/settings');
 http = require('http');
 path = require('path');
 app = express();
@@ -142,6 +143,7 @@ app.get '/error', (req,res) ->
 app.get '/sendanswer', answer_requests.sendanswer
 # get answers from database
 app.get '/getanswers', answer_requests.getanswers
+app.get "/newsettings",account_settings.newsettings
 
 # run server
 http.createServer(app).listen app.get('port'), () ->
