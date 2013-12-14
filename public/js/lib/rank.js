@@ -15,10 +15,18 @@
   };
 
   $(function() {
-    return addAnswersToRank({
+    addAnswersToRank({
       randomize: true,
       future: false,
       goals: true
+    });
+    return $('#moreToRank').on('click', function(e) {
+      e.preventDefault();
+      return addAnswersToRank({
+        randomize: true,
+        future: false,
+        goals: true
+      });
     });
   });
 

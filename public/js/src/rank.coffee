@@ -11,4 +11,11 @@ addAnswersToRank = (data) ->
 $ ->
 
 	addAnswersToRank({randomize: true, future: false, goals: true})
+
+	$('#moreToRank').on 'click', (e) ->
+		e.preventDefault()
+		addAnswersToRank({randomize: true, future: false, goals: true})
+	
+
+		
 	
