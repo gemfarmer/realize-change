@@ -1,7 +1,7 @@
 mongoose = require('mongoose');
 
 GlobalAnswer = require('./../Models/answers')
-
+user = require('./../Models/User')
 
 
 # answers to initial question
@@ -10,6 +10,8 @@ exports.sendanswer = (req, res) ->
 		# parsedBody = (req.query).parse()
 
 		console.log("answerquery", req.query)
+
+		# update global answers
 		newGlobalAnswer = new GlobalAnswer()
 
 		newGlobalAnswer.answerFuture = req.query.answerFuture
@@ -17,7 +19,19 @@ exports.sendanswer = (req, res) ->
 		newGlobalAnswer.save (err) ->
 			if(err) 
 				throw err;
-		res.send({success: "success"})
+
+		# console.log("username",username)
+		console.log(req.user.name)
+
+		#Add user answer
+		user.find {name: "#{req.user.name}"}, (err, userToUpdate) ->
+
+			userToUpdate[0].update {answers:{answerFuture: req.query.answerFuture, answerGoals: req.query.answerGoals}}, (err) ->
+				if(err) 
+					throw err;
+			res.send({success: "success"})
+
+
 
 # get answers from database
 exports.getanswers = (req,res) ->

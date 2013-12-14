@@ -4,7 +4,7 @@ config = require('../config');
 console.log(config);
 
 UserSchema = new mongoose.Schema({
-	name: String,
+	name: String
 	email: {type: String, lowercase: true }
 	answers: { 
 		answerFuture: String
