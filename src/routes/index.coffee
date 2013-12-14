@@ -58,6 +58,19 @@ exports.rank = (req, res) ->
 		renderObj.username = req.user.name
 		res.render("partials/rank", renderObj);
 
+exports.results = (req, res) ->
+	console.log "hey"
+	renderObj = {}
+	renderObj.title = app.locals.config.title
+	renderObj.subtitle =  app.locals.config.subtitle
+	
+	# conditional fixes login 'property name of undefined' error. not permanent
+	if req.user is undefined
+		res.render("partials/results", renderObj);
+	else
+		renderObj.username = req.user.name
+		res.render("partials/results", renderObj);
+
 exports.mission = (req,res) ->
 	console.log("reached mission")
 	res.render('partials/mission', { title: app.locals.config.title, subtitle: app.locals.config.subtitle})

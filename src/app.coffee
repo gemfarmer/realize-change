@@ -124,6 +124,7 @@ app.get('/', routes.index);
 app.get('/answers', routes.answers)
 app.get('/seeanswers', routes.seeanswers)
 app.get('/rank', routes.rank)
+app.get('/results', routes.results)
 app.get '/mission', routes.mission
 app.get('/main', ensureAuthenticated, routes.main);
 app.get '/logout', (req, res) ->

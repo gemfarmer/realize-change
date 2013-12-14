@@ -1,0 +1,23 @@
+<script id="results-template" type="text/x-handlebars-template">
+		<legend>What goals do you think we should be working on to make a better world?</legend>
+		<table class="table table-striped" id="goals">
+			<thead>
+				<tr>
+					<th>Goal</th>
+					<th>Votes</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each answers}}
+					<tr>
+						<td>{{this.answerGoals}}</td>
+						<td>{{this.votes}}</td>
+					</tr>
+				{{/each}}
+
+			</tbody>
+
+
+
+
+</script>

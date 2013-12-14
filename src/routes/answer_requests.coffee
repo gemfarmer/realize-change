@@ -39,17 +39,15 @@ exports.getanswers = (req,res) ->
 				if output is randOne
 					secondRandom()
 				else
-					findCallback()
+				
 					output
 			randTwo = secondRandom()
 
-		# Find Random Answer
-		findCallback = () ->
-			GlobalAnswer.find {}, (err, choice) ->
-				# console.log("CHOICE",choice)
-				# console.log("rand", choice[rand])
-				console.log({answers: [choice[randOne], choice[randTwo]], filterNone: true})
-				res.send {answers: [choice[randOne], choice[randTwo]], filterNone: true}
+		GlobalAnswer.find {}, (err, choice) ->
+			# console.log("rand", choice[rand])
+			console.log({answers: [choice[randOne], choice[randTwo]], filterNone: true})
+			res.send {answers: [choice[randOne], choice[randTwo]], filterNone: true}
+			
 	# show random result for both questions
 	if req.query.randomize is 'true'
 		randomAnswer()
