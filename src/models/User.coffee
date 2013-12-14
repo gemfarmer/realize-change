@@ -21,7 +21,7 @@ UserSchema = new mongoose.Schema({
 		state: String
 		city: String
 		ethnicity: String
-		age: Number
+		age: String
 		gender: String
 	}
 
