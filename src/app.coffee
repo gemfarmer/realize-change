@@ -7,6 +7,7 @@ routes = require('./routes');
 api = require('./routes/api');
 answer_requests = require('./routes/answer_requests');
 account_settings = require('./routes/settings');
+vote = require('./routes/vote');
 http = require('http');
 path = require('path');
 app = express();
@@ -144,7 +145,7 @@ app.get '/sendanswer', answer_requests.sendanswer
 # get answers from database
 app.get '/getanswers', answer_requests.getanswers
 app.get "/newsettings",account_settings.newsettings
-
+app.get "/upvote",vote.upvote
 # run server
 http.createServer(app).listen app.get('port'), () ->
 	console.log('\nRealize Change is up and listening on port ' + app.get('port'));
