@@ -18,8 +18,7 @@ UserSchema = new mongoose.Schema({
 	location: String
 	demographics: {
 		country: String
-		state: String
-		city: String
+		education: String
 		ethnicity: String
 		age: Number
 		gender: String
