@@ -35,9 +35,18 @@ On trying to answer questions-->( why you should register Modal)
 	* Mission
 
 ### TO DO
-1. Add node routing to main 4 pages
-2. Set up rest api in either angular or backbone --Richard?
-3. Set up db structure
+1. Reconfigure db structure 
+	* User should have 
+		* Own set of answers
+		* An array with list of answers that they have voted on (so that they don't repeat vote)
+		* user demographics data
+2. Under the login dropdown, add access to Account Settings information. Have option to fill out demographic information (country, state/province, city, ethnicity, age, gender, etc.)
+3. Be able to vote
+	* voting will add one vote to the answer with the matching global answer id
+	* voting will add both answer options to the user's list of "options seen"
+4. Add Results page that sorts answers based on their popularity (only display top 10?)
+	* Add data visualization page with votes sorted by demographic data
+
 
 When up the site is located here: http://realizechange.herokuapp.com
 ![Full](/public/img/full.png)

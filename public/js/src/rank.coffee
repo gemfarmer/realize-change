@@ -15,7 +15,10 @@ $ ->
 	$('#moreToRank').on 'click', (e) ->
 		e.preventDefault()
 		addAnswersToRank({randomize: true, future: false, goals: true})
-	
+	$('.vote').on 'click', (e) ->
+		e.preventDefault()
+		currentId = $(this).attr('id');
+		console.log(currentId)
 
 		
 	

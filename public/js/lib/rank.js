@@ -20,13 +20,19 @@
       future: false,
       goals: true
     });
-    return $('#moreToRank').on('click', function(e) {
+    $('#moreToRank').on('click', function(e) {
       e.preventDefault();
       return addAnswersToRank({
         randomize: true,
         future: false,
         goals: true
       });
+    });
+    return $('.vote').on('click', function(e) {
+      var currentId;
+      e.preventDefault();
+      currentId = $(this).attr('id');
+      return console.log(currentId);
     });
   });
 
