@@ -16,7 +16,7 @@
 
   $(function() {
     return addAnswersToRank({
-      randomize: false,
+      randomize: true,
       future: false,
       goals: true
     });

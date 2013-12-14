@@ -27,18 +27,20 @@ exports.getanswers = (req,res) ->
 	
 	randomAnswer = () ->
 		# Instantiate Rand
-		rand = 0
-
+		randOne = 0
+		randTwo = 0
 		# Count total answers
 		GlobalAnswer.count {}, (err, num) ->
 			# console.log("num",num)
 			console.log("err", err)
-			rand = Math.floor(Math.random() * num);
+			randOne = Math.floor(Math.random() * num);
+			randTwo = Math.floor(Math.random() * num);
+
 		# Find Random Answer
 		GlobalAnswer.find {}, (err, choice) ->
 			# console.log("CHOICE",choice)
 			# console.log("rand", choice[rand])
-			res.send {answers: [choice[rand]], filterNone: true}
+			res.send {answers: [choice[randOne], choice[randTwo]], filterNone: true}
 	# show random result for both questions
 	if req.query.randomize is 'true'
 		randomAnswer()
@@ -51,6 +53,15 @@ exports.getanswers = (req,res) ->
 			answersToSend = []
 			for answer in answers
 				answersToSend.push({answerFuture: answer.answerFuture, filterFuture: "future"})
+			res.send {answers: answersToSend}
+	else if req.query.goals is 'true'
+		console.log('all dreams')
+		GlobalAnswer.find {}, (err, answers) ->
+			console.log("err:", err)
+			console.log("answer",answers);
+			answersToSend = []
+			for answer in answers
+				answersToSend.push({answerFuture: answer.answerGoals, filterGoals: "goals"})
 			res.send {answers: answersToSend}
 
 
