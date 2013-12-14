@@ -133,17 +133,6 @@ app.get '/logout', (req, res) ->
 app.get '/error', (req,res) ->
 	res.send(401,'{err: please log in!}');
 
-# questions
-app.get '/sendquestion', (req, res) ->
-	# parsedquery = parse(req.query)
-	# parsedBody = (req.query).parse()
-	console.log("parsedbody", req.query)
-	newGlobalQuestion = new GlobalQuestion()
-	newGlobalQuestion.questions = req.query.question
-	newGlobalQuestion.save (err) ->
-		if(err) 
-			throw err;
-	res.send({success: "success"})
 
 # answers to initial question
 app.get '/sendanswer', answer_requests.sendanswer

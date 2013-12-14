@@ -1,18 +1,11 @@
 mongoose = require('mongoose');
 
 GlobalAnswerSchema = new mongoose.Schema({
-	answers: {type: [String], user: String}
 	answerFuture: String
 	answerGoals: String
+	votes: Number
 });
  
 
 
-exports.GlobalAnswerSchema = mongoose.model('GlobalAnswer', GlobalAnswerSchema)
-
-GlobalQuestionSchema = new mongoose.Schema({
-	questions: [String]
-
-});
-
-exports.GlobalQuestionSchema = mongoose.model('GlobalQuestion', GlobalQuestionSchema)
+module.exports = mongoose.model('GlobalAnswer', GlobalAnswerSchema)

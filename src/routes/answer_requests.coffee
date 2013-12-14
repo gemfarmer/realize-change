@@ -1,8 +1,6 @@
 mongoose = require('mongoose');
 
-GlobalAnswer = require('./../Models/answers').GlobalAnswerSchema;
-GlobalQuestion = require('./../Models/answers').GlobalQuestionSchema;
-
+GlobalAnswer = require('./../Models/answers')
 
 # answers to initial question
 exports.sendanswer = (req, res) ->
@@ -33,14 +31,25 @@ exports.getanswers = (req,res) ->
 		GlobalAnswer.count {}, (err, num) ->
 			# console.log("num",num)
 			console.log("err", err)
-			randOne = Math.floor(Math.random() * num);
-			randTwo = Math.floor(Math.random() * num);
+			randOne = Math.floor(Math.random() * num)
+			console.log("first",randOne)
+			secondRandom = () ->
+				output = Math.floor(Math.random() * num)
+				console.log("second", output)
+				if output is randOne
+					secondRandom()
+				else
+					findCallback()
+					output
+			randTwo = secondRandom()
 
 		# Find Random Answer
-		GlobalAnswer.find {}, (err, choice) ->
-			# console.log("CHOICE",choice)
-			# console.log("rand", choice[rand])
-			res.send {answers: [choice[randOne], choice[randTwo]], filterNone: true}
+		findCallback = () ->
+			GlobalAnswer.find {}, (err, choice) ->
+				# console.log("CHOICE",choice)
+				# console.log("rand", choice[rand])
+				console.log({answers: [choice[randOne], choice[randTwo]], filterNone: true})
+				res.send {answers: [choice[randOne], choice[randTwo]], filterNone: true}
 	# show random result for both questions
 	if req.query.randomize is 'true'
 		randomAnswer()
