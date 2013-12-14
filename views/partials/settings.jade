@@ -1,18 +1,52 @@
 extends ../layout
 
 block content
-	.container#partialHeader Account Settings
-		div.row.jumbotron#answers
-			.fieldset
-				form#answerPrompt
-					p.lead What are your dreams for the future?
-					textarea#answerFuture.form-group(type='email', cols="100" name='answerFuture', required, placeholder='Voice your dreams...').col-xs-12
-					br
-					p.lead What goals do you think we should be working on to make a better world?
-					textarea#answerGoals.form-group(type='email', cols="100" name='answerGoals', required, placeholder='Voice your dreams...').col-xs-12
-					br
-					button#addAnswer.btn.btn-primary.pull-right Submit Answers
-					a#seeAnswers.btn.btn-default.pull-right(href='/seeanswers') See All Answers
-					div#success.alert-success.alert.hide Your question has been successfully submitted. Ask another question!
+	//- .container#partialHeader Account Settings
+	//- 	div.row.jumbotron#answers
+	//- 		.fieldset
+	//- 			form#answerPrompt
+	//- 				p.lead What are your dreams for the future?
+	//- 				textarea#answerFuture.form-group(type='email', cols="100" name='answerFuture', required, placeholder='Voice your dreams...').col-xs-12
+	//- 				br
+	//- 				p.lead What goals do you think we should be working on to make a better world?
+	//- 				textarea#answerGoals.form-group(type='email', cols="100" name='answerGoals', required, placeholder='Voice your dreams...').col-xs-12
+	//- 				br
+	//- 				button#addAnswer.btn.btn-primary.pull-right Submit Answers
+	//- 				a#seeAnswers.btn.btn-default.pull-right(href='/seeanswers') See All Answers
+	//- 				div#success.alert-success.alert.hide Your question has been successfully submitted. Ask another question!
 
-			
+	//- 	country, state/province, city, ethnicity, age, gender,
+	.container
+		.lightbox-body
+			.fieldset
+				form#demographics
+					label(for="age") Age :
+						.btn-group
+							button.btn.btn-default.dropdown-toggle(type="button" data-toggle="dropdown") Your Age
+							ul.dropdown-menu  
+								li 
+									a 12-17
+								li 
+									a 17-25
+								li 
+									a 25-34
+								li  
+									a 34-40
+
+					br
+					label(for="country") Country:
+						input#country
+					br
+					label(for="city") City :
+						input#city
+					br
+					label(for="ethnicity") Ethnicity :
+						input#ethncity
+					br
+					label(for="gender") Gender :
+						input#gender
+					br
+					
+			.lightbox-footer
+				button.btn.btn-default(type='button') Close
+				button.btn.btn-primary(type='button') Save changes	
