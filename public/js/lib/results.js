@@ -16,9 +16,9 @@
 
   $(function() {
     return addAnswersToRank({
-      randomize: true,
-      future: true,
-      goals: true
+      randomize: false,
+      future: false,
+      goals: false
     });
   });
 

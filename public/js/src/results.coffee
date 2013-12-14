@@ -10,6 +10,6 @@ addAnswersToRank = (data) ->
 		$('#resultsRepo').html(dataTemplate(answers))
 $ ->
 
-	addAnswersToRank({randomize: true, future: true, goals: true})
+	addAnswersToRank({randomize: false, future: false, goals: false})
 
 	

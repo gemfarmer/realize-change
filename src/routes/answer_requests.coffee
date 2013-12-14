@@ -68,8 +68,17 @@ exports.getanswers = (req,res) ->
 			console.log("answer",answers);
 			answersToSend = []
 			for answer in answers
-				answersToSend.push({answerFuture: answer.answerGoals, filterGoals: "goals"})
+				answersToSend.push({answerGoals: answer.answerGoals, filterGoals: "goals"})
 			res.send {answers: answersToSend}
+	else
+		GlobalAnswer.find {}, (err, answers) ->
+			console.log("err:", err)
+			console.log("answer",answers);
+			answersToSend = []
+			for answer in answers
+				answersToSend.push({answerGoals: answer.answerGoals, answerFuture: answer.answerFuture, filterNone: "none"})
+			res.send {answers: answersToSend}
+
 
 
 
