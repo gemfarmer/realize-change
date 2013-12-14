@@ -9,7 +9,20 @@ UserSchema = new mongoose.Schema({
 	answers: { 
 		answerFuture: String
 		answerGoals: String
-		votes: Number
+	}
+	optionsSeen: [
+		{
+			answerGoals: String
+		}
+	]
+	location: String
+	demographics: {
+		country: String
+		state: String
+		city: String
+		ethnicity: String
+		age: Number
+		gender: String
 	}
 
 });
