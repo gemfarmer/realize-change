@@ -1,6 +1,21 @@
-#titleBody{
-
+body { 
+	background-color: navy;
 }
-#textBody{
+
+#titleBody{ 
+	color :teal;
+}
+
+#textBody {	
 	
+}
+
+ul {
+	padding: 4px;
+	margin: 12px;
+	line-height: 28px;
+}
+
+#splash {
+	padding-top: 16px;
 }
