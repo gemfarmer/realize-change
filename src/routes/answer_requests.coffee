@@ -2,6 +2,31 @@ mongoose = require('mongoose');
 
 GlobalAnswer = require('./../Models/answers')
 user = require('./../Models/User')
+# sort by multiple properties     
+(->
+        sb = (f) ->
+                i = @length
+                while i
+                        o = this[--i]
+                        this[i] = [].concat(f.call(o, o, i), o)
+                @sort (a, b) ->
+                        i = 0
+                        len = a.length
+
+                        while i < len
+                                return (if a[i] < b[i] then -1 else 1)  unless a[i] is b[i]
+                                ++i
+                        0
+                i = @length
+                while i
+                        this[--i] = this[i][this[i].length - 1]
+                this
+        if typeof Object.defineProperty is "function"
+                try
+                        Object.defineProperty Array::, "sortBy",
+                                value: sb
+        Array::sortBy = sb  unless Array::sortBy
+)()
 
 
 # answers to initial question
@@ -39,6 +64,23 @@ exports.getanswers = (req,res) ->
 	console.log("query", req.query)
 
 	
+	sortAsc = () ->
+		console.log 'asc'
+		GlobalAnswer.find {}, (err, results) ->
+			sortedResults = results.sortBy () ->
+				return [this.votes]
+			console.log 'sorted', sortedResults
+			res.send {answers: sortedResults}
+
+	sortDesc = () ->
+		console.log 'desc'
+		GlobalAnswer.find {}, (err, results) ->
+			sortedResults = results.sortBy () ->
+				return [-this.votes]
+			console.log 'sorted', sortedResults
+			res.send {answers: sortedResults}
+
+
 	randomAnswer = () ->
 		# Instantiate Rand
 		randOne = 0
@@ -68,6 +110,10 @@ exports.getanswers = (req,res) ->
 	if req.query.randomize is 'true'
 		randomAnswer()
 	# show dreams
+	else if req.query.asc is 'true'
+		sortAsc()
+	else if req.query.desc is 'true'
+		sortDesc()
 	else if req.query.future is 'true'
 		console.log('all dreams')
 		GlobalAnswer.find {}, (err, answers) ->

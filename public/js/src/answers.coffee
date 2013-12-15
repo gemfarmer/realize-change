@@ -1,16 +1,16 @@
 
-	# geoCharts
-	console.log("google",google)
-	drawVisualization = ->
-		countries = [["Country", "Popularity"], ["Germany", 200], ["United States", 300], ["Brazil", 400], ["Canada", 500], ["France", 600], ["RU", 700], ["Turkey", 2]]
-		data = google.visualization.arrayToDataTable(countries)
-		geochart = new google.visualization.GeoChart(document.getElementById("chart_div"))
-		options = {}
-		geochart.draw data, options
-	google.load "visualization", "1",
-		packages: ["geochart"]
+	# # geoCharts
+	# console.log("google",google)
+	# drawVisualization = ->
+	# 	countries = [["Country", "Popularity"], ["Germany", 200], ["United States", 300], ["Brazil", 400], ["Canada", 500], ["France", 600], ["RU", 700], ["Turkey", 2]]
+	# 	data = google.visualization.arrayToDataTable(countries)
+	# 	geochart = new google.visualization.GeoChart(document.getElementById("chart_div"))
+	# 	options = {}
+	# 	geochart.draw data, options
+	# google.load "visualization", "1",
+	# 	packages: ["geochart"]
 
-	google.setOnLoadCallback drawVisualization
+	# google.setOnLoadCallback drawVisualization
 
 
 $ ->

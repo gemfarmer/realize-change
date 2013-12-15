@@ -15,10 +15,30 @@
   };
 
   $(function() {
-    return addAnswersToRank({
+    addAnswersToRank({
       randomize: false,
       future: false,
-      goals: false
+      goals: false,
+      asc: false,
+      desc: false
+    });
+    $(document).on('click', '.sortAsc', function() {
+      return addAnswersToRank({
+        randomize: false,
+        future: false,
+        goals: false,
+        asc: true,
+        desc: false
+      });
+    });
+    return $(document).on('click', '.sortDesc', function() {
+      return addAnswersToRank({
+        randomize: false,
+        future: false,
+        goals: false,
+        asc: false,
+        desc: true
+      });
     });
   });
 
