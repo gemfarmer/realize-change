@@ -115,9 +115,9 @@ app.get '/auth/google/callback', passport.authenticate('google', { failureRedire
 
 # authentication helper
 ensureAuthenticated = (req, res, next) ->
-	if (req.isAuthenticated())
-		return next()
-	res.redirect('/error');
+	return next() if req.isAuthenticated()
+	res.redirect('/');
+	next()
 
 # user routes
 app.get('/', routes.index);
@@ -126,9 +126,9 @@ app.get '/settings', (req, res) ->
 # app.get('/partials/:name', ensureAuthenticated, routes.partials);
 
 app.get('/answers', routes.answers)
-app.get('/seeanswers', routes.seeanswers)
-app.get('/rank', routes.rank)
-app.get('/results', routes.results)
+app.get('/seeanswers',ensureAuthenticated, routes.seeanswers)
+app.get('/rank',ensureAuthenticated, routes.rank)
+app.get('/results',ensureAuthenticated, routes.results)
 app.get '/mission', routes.mission
 app.get('/main', ensureAuthenticated, routes.main);
 app.get '/logout', (req, res) ->
