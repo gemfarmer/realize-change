@@ -51,8 +51,12 @@ On trying to answer questions-->( why you should register Modal)
 11. Add character limit to begin dreaming page
 12. Make sure dream submission returns green success box.
 13. After dreams submission form is completed, remove from DOM. replace with new form asking "What other questions should we ask?" Add a question or click "no thanks". Add geocharts to DOM.
+<<<<<<< HEAD
 14. Paypal integration--what do we need?
 15. 500 char limit on dreams, 200 on golals. text below indicated remaining
+=======
+Hi Brian
+>>>>>>> 8328458468000e2996665f19ae7fc0e545730c97
 
 <!-- 
 1. Reconfigure db structure 
