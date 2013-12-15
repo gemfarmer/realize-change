@@ -4,11 +4,9 @@ GlobalAnswer = require('./../Models/answers')
 user = require('./../Models/User')
 
 # req { age: '12-17', country: 'wrg', ethnicity: 'wrg', gender: 'wgr' }
-exports.upvote= (req,res) -> 
-	console.log(req.query.currentId)
+exports.upvote = (req,res) -> 
 
-		
-		# update global votes
+	# update global votes
 	GlobalAnswer.findByIdAndUpdate req.query.currentId, {$inc: { votes: 1 }}, (err, data) ->
 		console.log("data",data);
 		if(err) 

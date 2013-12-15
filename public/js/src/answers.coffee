@@ -1,3 +1,18 @@
+
+	# geoCharts
+	console.log("google",google)
+	drawVisualization = ->
+		countries = [["Country", "Popularity"], ["Germany", 200], ["United States", 300], ["Brazil", 400], ["Canada", 500], ["France", 600], ["RU", 700], ["Turkey", 2]]
+		data = google.visualization.arrayToDataTable(countries)
+		geochart = new google.visualization.GeoChart(document.getElementById("chart_div"))
+		options = {}
+		geochart.draw data, options
+	google.load "visualization", "1",
+		packages: ["geochart"]
+
+	google.setOnLoadCallback drawVisualization
+
+
 $ ->
 	$seeAnswers = $('#seeAnswers')
 	$seeAnswers.css({opacity: "0"})
@@ -13,23 +28,3 @@ $ ->
 
 			`setTimeout(function() { $("#success").removeClass("show"); }, 3000 );`
 
-
-	# geoCharts
-	# console.log("google",google)
-	# google.load('visualization', '1', {'packages': ['geochart']});
-	# google.setOnLoadCallback(drawRegionsMap);
-	# drawRegionsMap = () ->
-	# 	data = google.visualization.arrayToDataTable([
-	# 		['Country', 'Popularity'],
-	# 		['Germany', 200],
-	# 		['United States', 300],
-	# 		['Brazil', 400],
-	# 		['Canada', 500],
-	# 		['France', 600],
-	# 		['RU', 700]
-	# 	]);
-
-	# 	options = {};
-
-	# 	chart = new google.visualization.GeoChart($('#chart_div'));
-	# 	chart.draw(data, options);

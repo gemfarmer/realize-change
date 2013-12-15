@@ -19,8 +19,10 @@ $ ->
 	$(document).on 'click',".vote", (e) ->
 		e.preventDefault()	
 		currentId = $(this).data('id');
-		$.get "/upvote",{currentId:currentId},(err,data) ->
-			console.log(data)
+		
+		$.get "/upvote", {currentId: currentId}, (err,fromServer) ->
+			console.log(fromServer)
+			addAnswersToRank({randomize: true, future: false, goals: true})
 
 
 

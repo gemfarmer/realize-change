@@ -35,6 +35,20 @@ On trying to answer questions-->( why you should register Modal)
 	* Mission
 
 ### TO DO
+1. Configure rank queries so that they exlude any id's of the optionsSeen from the potential options
+2. If user has added account settings, feed them into the form using handlebars
+3. When user clicks 'show dreams', reduce number shown to ten, and use pagination
+4. Add Sorting capabilities to results page. carat up, carat down
+5. Sort out user accessibility issues so that user can only be on correct pages
+6. Redo form format with selects
+	* Feed country data into country dropdown from google api. Store in a dummy array
+		* Or gather ip on click information. Add disclaimer to site that we are adding information.
+	* Make form a modal
+7. Connect country data to geocharts
+8. Add data visualization page
+9. Based on detre's input, consolidate see answers, rank, and results page into one page with separate tabs (pillbox styling)
+
+<!-- 
 1. Reconfigure db structure 
 	* User should have 
 		* Own set of answers
@@ -48,7 +62,7 @@ On trying to answer questions-->( why you should register Modal)
 4. Add Results page that sorts answers based on their popularity (only display top 10?)
 	* Add data visualization page with votes sorted by demographic data
 5. Geocharts showing location of users
-6. Add content--add styles
+6. Add content--add styles -->
 
 When up the site is located here: http://realizechange.herokuapp.com
 ![Full](/public/img/full.png)
