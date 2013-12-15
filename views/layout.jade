@@ -28,7 +28,11 @@ html
 						each link in links
 							- var isActive = (link.path == current ? 'active' : '')
 							li(class = '#{isActive}')
-								a(href='#{link.path}')= link.label
+								
+								a(href='#{link.path}')
+									i.fa(class="#{link.icon}")
+									| #{link.label}
+
 					div.pull-right
 						ul.nav.navbar-nav.navbar-right
 							if username
