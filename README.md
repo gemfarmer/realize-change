@@ -44,9 +44,13 @@ On trying to answer questions-->( why you should register Modal)
 	* Feed country data into country dropdown from google api. Store in a dummy array
 		* Or gather ip on click information. Add disclaimer to site that we are adding information.
 	* Make form a modal
-7. Connect country data to geocharts
+7. Connect country data to geocharts, move geochart to dreams page
 8. Add data visualization page
 9. Based on detre's input, consolidate see answers, rank, and results page into one page with separate tabs (pillbox styling)
+10. Currently you can't vote without logging in. Change that.
+11. Add character limit to begin dreaming page
+12. Make sure dream submission returns green success box.
+13. After dreams submission form is completed, remove from DOM. replace with new form asking "What other questions should we ask?" Add a question or click "no thanks". Add geocharts to DOM.
 
 <!-- 
 1. Reconfigure db structure 
