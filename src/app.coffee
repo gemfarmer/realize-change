@@ -145,6 +145,8 @@ app.get '/sendanswer', answer_requests.sendanswer
 # get answers from database
 app.get '/getanswers', answer_requests.getanswers
 app.get "/newsettings",account_settings.newsettings
+app.get "/loadsettings",account_settings.loadsettings
+
 app.get "/upvote", vote.upvote
 # run server
 http.createServer(app).listen app.get('port'), () ->
