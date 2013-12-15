@@ -34,8 +34,13 @@
       currentId = $(this).data('id');
       return $.get("/upvote", {
         currentId: currentId
-      }, function(err, data) {
-        return console.log(data);
+      }, function(err, fromServer) {
+        console.log(fromServer);
+        return addAnswersToRank({
+          randomize: true,
+          future: false,
+          goals: true
+        });
       });
     });
   });
