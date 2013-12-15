@@ -103,7 +103,7 @@ app.get '/auth/google',
 	(req, res) ->
 
 app.get '/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) ->
-	res.redirect('/main');
+	res.redirect req.session.redirectURL ? '/main'
 
 # app.get('/auth/twitter', passport.authenticate('twitter'));
 
