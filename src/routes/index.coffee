@@ -21,7 +21,7 @@ exports.main = (req, res) ->
 # 	# console.log(name)
 # 	res.render("partials/#{req.params.name}", renderObj);
 exports.answers = (req, res) ->
-
+	req.session.redirectURL = req.url
 	renderObj = {}
 	renderObj.title = app.locals.config.title
 	renderObj.subtitle =  app.locals.config.subtitle
@@ -35,6 +35,7 @@ exports.answers = (req, res) ->
 		res.render("partials/answers", renderObj);
 
 exports.seeanswers = (req, res) ->
+	req.session.redirectURL = req.url
 	renderObj = {}
 	renderObj.title = app.locals.config.title
 	renderObj.subtitle =  app.locals.config.subtitle
@@ -46,6 +47,7 @@ exports.seeanswers = (req, res) ->
 		renderObj.username = req.user.name
 		res.render("partials/seeanswers", renderObj);
 exports.rank = (req, res) ->
+	req.session.redirectURL = req.url
 	console.log "hey"
 	renderObj = {}
 	renderObj.title = app.locals.config.title
@@ -59,6 +61,7 @@ exports.rank = (req, res) ->
 		res.render("partials/rank", renderObj);
 
 exports.results = (req, res) ->
+	req.session.redirectURL = req.url
 	console.log "hey"
 	renderObj = {}
 	renderObj.title = app.locals.config.title
@@ -72,6 +75,7 @@ exports.results = (req, res) ->
 		res.render("partials/results", renderObj);
 
 exports.mission = (req,res) ->
+	req.session.redirectURL = req.url
 	console.log("reached mission")
 	res.render('partials/mission', { title: app.locals.config.title, subtitle: app.locals.config.subtitle})
 
