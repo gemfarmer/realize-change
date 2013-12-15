@@ -7,14 +7,19 @@
   dataTemplate = Handlebars.compile(source);
 
   appendAnswers = function(data) {
+    var $answerRepo;
+    $answerRepo = $('#answerRepo');
     return $.get('/getanswers', data, function(answers) {
       console.log("answeranswer:", answers);
       console.log("data.future", data.future, "data.goals", data.goals);
-      return $('#answerRepo').html(dataTemplate(answers));
+      return $answerRepo.html(dataTemplate(answers));
     });
   };
 
   $(function() {
+    var $moreDreams, dreamsToShow;
+    dreamsToShow = 10;
+    $moreDreams = $('#moreDreams');
     appendAnswers({
       randomize: true,
       future: true,
@@ -30,10 +35,21 @@
     });
     return $('#alldreams').on('click', function(e) {
       e.preventDefault();
+      $(document).on('click', '#moreDreams', function(e) {
+        dreamsToShow += 10;
+        e.preventDefault();
+        return appendAnswers({
+          randomize: false,
+          future: true,
+          goals: false,
+          dreamsToShow: dreamsToShow
+        });
+      });
       return appendAnswers({
         randomize: false,
         future: true,
-        goals: false
+        goals: false,
+        dreamsToShow: dreamsToShow
       });
     });
   });

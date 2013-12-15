@@ -4,7 +4,7 @@ GlobalAnswer = require('./../Models/answers')
 user = require('./../Models/User')
 
 # req { age: '12-17', country: 'wrg', ethnicity: 'wrg', gender: 'wgr' }
-exports.newsettings= (req,res) -> 
+exports.newsettings = (req,res) -> 
 	user.find {name: "#{req.user.name}"}, (err, userToUpdate) ->
 
 			userToUpdate[0].update {
@@ -21,3 +21,7 @@ exports.newsettings= (req,res) ->
 				if(err) 
 					throw err;
 				res.send({success: "success"})
+exports.loadsettings = (req,res) ->
+	user.find {name: "#{req.user.name}"}, (err, userToLoad) ->
+		console.log("user",userToLoad[0].demographics)
+		res.send(userToLoad[0].demographics)
