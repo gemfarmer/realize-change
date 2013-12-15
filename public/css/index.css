@@ -15,4 +15,8 @@ label {
 .lightbox-footer{
 	margin-top:20px;
 }
+#chart_div{
+	height:600px;
+	width:800px;
+}
 
