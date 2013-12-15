@@ -72,10 +72,19 @@ exports.getanswers = (req,res) ->
 		console.log('all dreams')
 		GlobalAnswer.find {}, (err, answers) ->
 			console.log("err:", err)
+			
 			console.log("answer",answers);
+			# Instantiate Vars
 			answersToSend = []
-			for answer in answers
-				answersToSend.push({answerFuture: answer.answerFuture, filterFuture: "future"})
+			i = 0
+			more = true
+			arrayLength = req.query.dreamsToShow
+			if answers.length < arrayLength
+				arrayLength = answers.length
+				more = false
+			while i < arrayLength
+				answersToSend.push({answerFuture: answers[i].answerFuture, filterFuture: "future", more: more})
+				i++
 			res.send {answers: answersToSend}
 	else if req.query.goals is 'true'
 		console.log('all dreams')
