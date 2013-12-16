@@ -1,0 +1,17 @@
+extends ../layout
+block content
+	h1 PayPal REST API
+
+	div#paypal
+		p Create a new PayPal Payment
+			form(action="/create")
+			input(type='hidden', name='method', value='paypal')
+			label(for='amount') Amount
+			input(type='text', id='amount', name='amount', required)
+			label(for='currency') Currency
+			input(type='text', id='currency', maxlength='3',
+				name='currency', placeholder='USD', required)
+			label(for='description') Description
+			input(type='text', id='description', name='description',
+				placeholder='Optional')
+			button(type='submit') Create Payment

@@ -1,5 +1,4 @@
 {
-  "port" : 5000,
   "api" : {
     "host" : "api.sandbox.paypal.com",
     "port" : "",            
