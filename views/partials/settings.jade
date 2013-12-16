@@ -17,19 +17,24 @@ block content
 
 	//- 	country, state/province, city, ethnicity, age, gender,
 	.container
-		.lightbox-body
+		.lightbox-body.jumbotron
 			.fieldset
 				form#demographics
 					label(for="age") Age :
-					select#age(name="age") Your Age
+					select#age(name="age")
+						option(value='', selected='selected') Your Age
+						option(value="0-11") 11 and under
 						option(value="12-17") 12-17
 						option(value="18-25") 18-25
 						option(value="26-34") 26-34
 						option(value="35-49") 35-49
+						option(value="50-65") 50-65
+						option(value="65+") 65 and over
+
 		
 					br
 					label(for="country") Country:
-					select(name='country')
+					select#country(name='country')
 						option(value='', selected='selected') Select Country
 						option(value='United States') United States
 						option(value='United Kingdom') United Kingdom
