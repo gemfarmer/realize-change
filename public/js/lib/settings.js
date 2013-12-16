@@ -5,11 +5,11 @@
     loadSettings = function() {
       return $.get('/loadsettings', function(data, err) {
         console.log("successful", data);
-        $('#age').val("" + data.age);
-        $('#country').val("" + data.country);
-        $('#education').val("" + data.education);
-        $('#ethnicity').val("" + data.ethnicity);
-        return $('#gender').val("" + data.gender);
+        $('#age').val(("" + data.age) || "");
+        $('#country').val(("" + data.country) || "");
+        $('#education').val(("" + data.education) || "");
+        $('#ethnicity').val(("" + data.ethnicity) || "");
+        return $('#gender').val(("" + data.gender) || "");
       });
     };
     loadSettings();

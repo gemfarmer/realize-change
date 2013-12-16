@@ -2,11 +2,12 @@ $ ->
 	loadSettings = () ->
 		$.get '/loadsettings', (data,err) ->
 			console.log("successful",data)
-			$('#age').val("#{data.age}")
-			$('#country').val("#{data.country}")
-			$('#education').val("#{data.education}")
-			$('#ethnicity').val("#{data.ethnicity}")
-			$('#gender').val("#{data.gender}")
+
+			$('#age').val("#{data.age}" or "")
+			$('#country').val("#{data.country}" or "")
+			$('#education').val("#{data.education}" or "")
+			$('#ethnicity').val("#{data.ethnicity}" or "")
+			$('#gender').val("#{data.gender}" or "")
 	# Initialize Settings (will be blank initialy)
 	loadSettings()
 
