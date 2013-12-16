@@ -21,7 +21,6 @@ FacebookStrategy = require('passport-facebook').Strategy;
 TwitterStrategy = require('passport-twitter').Strategy;
 GoogleStrategy = require('passport-google').Strategy;
 fs = require('fs')
-paypal = require('./routes/paypal')
 
 
 # config = require('./oauth.js')
@@ -34,7 +33,7 @@ paypal = require('./routes/paypal')
   console.error("File config.json not found or is invalid: " + e.message);
   process.exit(1);
 }
-paypal.init(configPaypal)`
+routes.init(configPaypal)`
 
 # connect to mongo
 mongoose.connect(process.env.MONGOHQ_URL or config.mongoUrl);
@@ -152,9 +151,10 @@ app.get '/error', (req,res) ->
 	res.send(401,'{err: please log in!}');
 
 # paypal create and execute
-# app.get('/create', routes.create)
-# app.get('/execute', routes.execute)
-app.get('/cancel', routes.cancel)
+app.get('/paypals', routes.paypalindex)
+app.get('/paypals/create', routes.create)
+app.get('/paypals/execute', routes.execute)
+app.get('/paypals/cancel', routes.cancel)
 
 # answers to initial question
 app.get '/sendanswer', answer_requests.sendanswer

@@ -5,6 +5,10 @@ config = {
 				returnURL: 'http://realize-change-now.herokuapp.com/auth/google/callback',
 				realm: 'http://realize-change-now.herokuapp.com/'
 			},
+			paypal : {
+				returnURL : 'http://realize-change-now.herokuapp.com/paypals/execute',
+				cancelURL : 'http://realize-change-now.herokuapp.com/paypals/cancel'
+			},
 			twitter: {
 
 			},
@@ -17,6 +21,10 @@ config = {
 			google: {
 				returnURL: 'http://localhost:1337/auth/google/callback',
 				realm: 'http://localhost:1337/'
+			},
+			paypal : {
+				returnURL : 'http://localhost:1337/paypals/execute',
+				cancelURL : 'http://localhost:1337/paypals/cancel'
 			},
 			twitter: {
 	

@@ -1,6 +1,6 @@
 # renderObj = { title: app.locals.config.title, subtitle: app.locals.config.subtitle, 200}
 
-paypal = require('./paypal')
+paypal = require('paypal-rest-sdk')
 
 exports.index = (req, res) ->
 	res.render('index', { title: app.locals.config.title, subtitle: app.locals.config.subtitle});
@@ -81,42 +81,73 @@ exports.mission = (req,res) ->
 	console.log("reached mission")
 	res.render('partials/mission', { title: app.locals.config.title, subtitle: app.locals.config.subtitle})
 
-exports.cancel = (req, res) ->
-  res.send("The payment got canceled")
+#Paypal functions
+exports.paypalindex = (req, res) ->
+	res.render('paypals/paypalindex')
 
+exports.create = (req, res) ->
+	method = req.param('method')
 
-# paypal.payment.create(payment, (error, payment) ->
-# 	if (error)
-# 		console.log(error)
-# 	else
-# 		if(payment.payer.payment_method is 'paypal')
-# 			req.session.paymentId = payment.id;
-# 			redirectUrl;
-# 			i = 0
-# 			while i < payment.links.length
-# 				i++
-# 				link = payment.links[i];
-# 				if (link.method is 'REDIRECT')
-# 					redirectUrl = link.href
-# 			res.redirect(redirectUrl)
-# 			)
+	payment = {
+		"intent": "sale",
+		"payer": {
+		},
+		"transactions": [{
+			"amount": {
+				"currency": req.param('currency'),
+				"total": req.param('amount')
+			},
+			"description": req.param('description')
+		}]
+	}
+	if (method is 'paypal')
+		payment.payer.payment_method = 'paypal'
+		payment.redirect_urls = {
+			"return_url": config.paypal.returnURL,
+			"cancel_url": config.paypal.cancelURL
+		}
+	else if (method is 'credit_card')
+		funding_instruments = [
+			{
+				"credit_card": {
+					"type": req.param('type').toLowerCase(),
+					"number": req.param('number'),
+					"expire_month": req.param('expire_month'),
+					"expire_year": req.param('expire_year'),
+					"first_name": req.param('first_name'),
+					"last_name": req.param('last_name')
+				}
+			}
+		];
+		payment.payer.payment_method = 'credit_card'
+		payment.payer.funding_instruments = funding_instruments
 
-# exports.create = (req, res) ->
-# 	payment = {}
-# 	paypal.payment.create(payment, (error, payment) ->
-# 		if (error)
-# 			console.log(error)
-# 		else
-# 			...
-# 	)
+	paypal.payment.create(payment, (error, payment) ->
+		if (error)
+			console.log(error)
+			res.render('paypals/error', { 'error': error })
+		else
+			req.session.paymentId = payment.id
+			res.render('paypals/create', { 'payment': payment })
+	)
 
 exports.execute = (req, res) ->
 	paymentId = req.session.paymentId
 	payerId = req.param('PayerID')
-	details = { "payer_id": payerId }
-	paypal.payment.execute(paymentId, details, (error, payment) ->
+	details = { "payer_id": payerId };
+	payment = paypal.payment.execute(paymentId, details, (error, payment) ->
 		if (error)
 			console.log(error)
+			res.render('paypals/error', { 'error': error })
 		else
-			res.send("Success")
-			)
+			res.render('paypals/execute', { 'payment': payment })
+	)
+
+exports.cancel = (req, res) ->
+	res.render('paypals/cancel')
+
+# Paypal Configuration
+
+exports.init = (c) ->
+	config = c
+	paypal.configure(c.api)
