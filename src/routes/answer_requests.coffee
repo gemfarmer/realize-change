@@ -1,7 +1,7 @@
 mongoose = require('mongoose');
 
-GlobalAnswer = require('./../Models/answers')
-user = require('./../Models/User')
+GlobalAnswer = require('./../models/answers')
+user = require('./../models/User')
 # sort by multiple properties     
 (->
         sb = (f) ->
