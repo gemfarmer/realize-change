@@ -14,13 +14,15 @@
       val = $('#answerPrompt').serialize();
       $('#answerFuture').val('');
       $('#answerGoals').val('');
-      return $.get('/sendanswer', val, function(data) {
+      $.get('/sendanswer', val, function(data) {
         $seeAnswers.css({
           opacity: "1"
         });
         $('#success').addClass("show");
         return setTimeout(function() { $("#success").removeClass("show"); }, 3000 );;
       });
+      $('#answers').hide();
+      return $('#answerRepo').append('<div class="container"><div class="jumbotron row"><h3>Thanks for your participation!</h3><p>Enjoy your dream browsing</p></div></div>');
     });
     $answerFuture = $('#answerFuture');
     $answerGoals = $('#answerGoals');
@@ -30,7 +32,7 @@
       val = $answerFuture.val();
       console.log(val.length);
       $countdownFuture = $('#countdownFuture');
-      return $countdownFuture.val(500 - val.length);
+      return $countdownFuture.val(300 - val.length);
     });
     return $answerGoals.on('keyup', function(e) {
       var $countdownGoals, val;
@@ -38,7 +40,7 @@
       val = $answerGoals.val();
       console.log(val.length);
       $countdownGoals = $('#countdownGoals');
-      return $countdownGoals.val(200 - val.length);
+      return $countdownGoals.val(150 - val.length);
     });
   });
 

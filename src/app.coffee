@@ -69,20 +69,7 @@ passport.use(new GoogleStrategy({returnURL: config.google.returnURL, realm: conf
 					console.log("New user, " + newUser.name + ", was created");
 					done(null, newUser);
 ));
-# passport.use(new TwitterStrategy({
-# 	consumerKey: 'TWITTER_CONSUMER_KEY',
-# 	consumerSecret: 'TWITTER_CONSUMER_SECRET',
-# 	callbackURL: "http://127.0.0.1:1337/auth/twitter/callback"
-# }, (token, tokenSecret, profile, done) ->
-# 	# asynchronous verification, for effect...
-# 	process.nextTick () ->
-	  
-# 	# To keep the example simple, the user's Twitter profile is returned to
-# 	# represent the logged-in user.  In a typical application, you would want
-# 	# to associate the Twitter account with a user record in your database,
-# 	# and return that user instead.
-# 		return done(null, profile);
-# ));
+
 
 # config - all environments
 app.set('port', process.env.PORT || 1337);
