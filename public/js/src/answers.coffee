@@ -18,6 +18,9 @@ $ ->
 	$seeAnswers.css({opacity: "0"})
 	$(document).on 'click', '#addAnswer', (e) ->
 		e.preventDefault()
+		countryOfOrigin = geoplugin_countryName()
+		console.log countryOfOrigin
+
 		val = $('#answerPrompt').serialize()
 		$('#answerFuture').val('')
 		$('#answerGoals').val('')

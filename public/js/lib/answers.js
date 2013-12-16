@@ -7,8 +7,10 @@
       opacity: "0"
     });
     return $(document).on('click', '#addAnswer', function(e) {
-      var val;
+      var countryOfOrigin, val;
       e.preventDefault();
+      countryOfOrigin = geoplugin_countryName();
+      console.log(countryOfOrigin);
       val = $('#answerPrompt').serialize();
       $('#answerFuture').val('');
       $('#answerGoals').val('');
