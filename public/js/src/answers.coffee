@@ -30,4 +30,24 @@ $ ->
 			$('#success').addClass("show")
 
 			`setTimeout(function() { $("#success").removeClass("show"); }, 3000 );`
+	
+	$answerFuture = $('#answerFuture')
+	$answerGoals = $('#answerGoals')
+	$answerFuture.on 'keyup', (e) ->
+		e.preventDefault()
+		val = $answerFuture.val()
+		console.log(val.length)
+		$countdownFuture = $('#countdownFuture')
+		$countdownFuture.val(500-val.length)
+		
+		
+	$answerGoals.on 'keyup', (e) ->
+		e.preventDefault()
+		val = $answerGoals.val()
+		console.log(val.length)
+		$countdownGoals = $('#countdownGoals')
+		$countdownGoals.val(200-val.length)
+		
+
+
 

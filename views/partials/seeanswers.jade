@@ -1,12 +1,13 @@
 extends ../layout
 
 block content
-	.container.jumbotron#partialHeader
-		div.row-fluid#splash
-			.btn.btn-primary#randomize Randomize
-			.btn.btn-success#alldreams Show Dreams
+	.container
+		.jumbotron#partialHeader
+			div.row-fluid#splash
+				.btn.btn-primary#randomize Randomize
+				.btn.btn-success#alldreams Show Dreams
 
-			#answerRepo
+				#answerRepo
+					
+				include seeanswers.html
 				
-			include seeanswers.html
-			

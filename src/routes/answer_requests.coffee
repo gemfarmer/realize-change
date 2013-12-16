@@ -105,7 +105,7 @@ exports.getanswers = (req,res) ->
 					
 				# console.log("rand", choice[rand])
 				# console.log("res.send",{answers: [choice[randOne], choice[randTwo]], filterNone: true})
-				res.send {answers: choiceOne,choiceTwo], filterNone: true}
+				res.send {answers: [choiceOne,choiceTwo], filterNone: true}
 			user.find {_id: "#{req.user._id}"}, (err, chosen) ->
 				
 				# console.log("chosen",chosen[0].optionsSeen)
