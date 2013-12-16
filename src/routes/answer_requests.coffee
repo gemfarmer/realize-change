@@ -102,10 +102,19 @@ exports.getanswers = (req,res) ->
 			randTwo = secondRandom()
 
 		GlobalAnswer.find {}, (err, choice) ->
-			# console.log("rand", choice[rand])
+			# user.find {_id: "#{req.user._id}"}, (err, chosen) ->
+				
+			# 	console.log("chosen",chosen[0])
+				# for option in chosen[0].optionsSeen
+				# 	# if option is choice[randOne] or choice[randTwo]
+				# 	# 	randomAnswer()
+				# 	# else
+				# 	console.log(option)
+
+					# console.log("rand", choice[rand])
 			console.log({answers: [choice[randOne], choice[randTwo]], filterNone: true})
 			res.send {answers: [choice[randOne], choice[randTwo]], filterNone: true}
-			
+					
 	# show random result for both questions
 	if req.query.randomize is 'true'
 		randomAnswer()

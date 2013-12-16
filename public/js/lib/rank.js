@@ -29,11 +29,13 @@
       });
     });
     return $(document).on('click', ".vote", function(e) {
-      var currentId;
+      var chosenId, otherId;
       e.preventDefault();
-      currentId = $(this).data('id');
+      chosenId = $(this).data('id');
+      otherId = $(this).data('idt');
       return $.get("/upvote", {
-        currentId: currentId
+        chosenId: chosenId,
+        otherId: otherId
       }, function(err, fromServer) {
         console.log(fromServer);
         return addAnswersToRank({

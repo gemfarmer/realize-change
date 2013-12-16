@@ -18,9 +18,10 @@ $ ->
 		# get vote ID and send to server
 	$(document).on 'click',".vote", (e) ->
 		e.preventDefault()	
-		currentId = $(this).data('id');
+		chosenId = $(this).data('id');
+		otherId = $(this).data('idt');
 		
-		$.get "/upvote", {currentId: currentId}, (err,fromServer) ->
+		$.get "/upvote", {chosenId: chosenId, otherId: otherId}, (err,fromServer) ->
 			console.log(fromServer)
 			addAnswersToRank({randomize: true, future: false, goals: true})
 

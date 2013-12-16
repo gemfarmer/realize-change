@@ -4,7 +4,7 @@
 			<div class="container">
 				
 				<div class="goal">{{answers.[0].answerGoals}}
-					<vote class="vote btn" href="" data-id="{{answers.[0]._id}}">
+					<vote class="vote btn" href="" data-id="{{answers.[0]._id}}" data-idt="{{answers.[1]._id}}">
 						<i class="fa fa-thumbs-o-up"></i>
 					</vote>
 				</div>
@@ -13,12 +13,13 @@
 			<div class="container">
 	
 				<div class="goal">{{answers.[1].answerGoals}}
-					<vote class="vote btn" href="#" data-id="{{answers.[1]._id}}">
+					<vote class="vote btn" href="#" data-id="{{answers.[1]._id}}" data-idt="{{answers.[0]._id}}">
 						<i class="fa fa-thumbs-o-up"></i>
 					</vote>
 				</div>
 
 			</div>
+
 
 
 

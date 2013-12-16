@@ -10,11 +10,7 @@ UserSchema = new mongoose.Schema({
 		answerFuture: String
 		answerGoals: String
 	}
-	optionsSeen: [
-		{
-			answerGoals: String
-		}
-	]
+	optionsSeen: [String]
 	location: String
 	demographics: {
 		country: String
