@@ -1,6 +1,10 @@
-module.exports = (GlobalAnswer, app) ->
+module.exports = (GlobalAnswer, app, user) ->
 
+	answer_requests = require './answer_requests'
+	sendanswer = app.get('/sendanswer', answer_requests)(GlobalAnswer, app, user).sendanswer
+	getanswers = app.get('/getanswers', answer_requests)(GlobalAnswer, app, user).getanswers
+	
 	return {
-		sendanswer: require('./sendanswer')(GlobalAnswer, app).sendanswer
-		getanswers: require('./getanswers')(GlobalAnswer, app).getanswers
+		sendanswer: sendanswer
+		getanswers: getanswers
 	}

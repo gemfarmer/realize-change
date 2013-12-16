@@ -5,8 +5,7 @@ console.log = if global.process.env.NODE_ENV? and global.process.env.NODE_ENV is
 express = require('express');
 routes = require('./routes');
 api = require('./routes/api');
-answer_requests = require('./routes/answer_requests');
-account_settings = require('./routes/settings');
+
 vote = require('./routes/vote');
 http = require('http');
 path = require('path');
@@ -14,30 +13,27 @@ app = express();
 global.app = app;
 mongoose = require('mongoose');
 config = require('./config');
-user = require('./Models/User')
 passport = require('passport');
-GlobalAnswer = require('./Models/answers')
+
+
 FacebookStrategy = require('passport-facebook').Strategy;
 TwitterStrategy = require('passport-twitter').Strategy;
 GoogleStrategy = require('passport-google').Strategy;
 fs = require('fs')
-paypal = require('./routes/paypal')
 
 
 # config = require('./oauth.js')
 
-# paypal
-`try {
-  var configJSON = fs.readFileSync(__dirname + "/../config.json");
-  var configPaypal = JSON.parse(configJSON.toString());
-} catch (e) {
-  console.error("File config.json not found or is invalid: " + e.message);
-  process.exit(1);
-}
-paypal.init(configPaypal)`
-
 # connect to mongo
 mongoose.connect(process.env.MONGOHQ_URL or config.mongoUrl);
+
+
+require('./models/user')
+require('./models/answers')
+user = mongoose.model('User')
+GlobalAnswer = mongoose.model('GlobalAnswer')
+answer_requests = require('./routes/answer_requests');
+account_settings = require('./routes/settings');
 
 # passport settings
 passport.serializeUser (user,done) ->
@@ -105,14 +101,6 @@ app.get '/auth/google',
 app.get '/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) ->
 	res.redirect req.session.redirectURL ? '/main'
 
-# app.get('/auth/twitter', passport.authenticate('twitter'));
-
-# Twitter will redirect the user to this URL after approval.  Finish the
-# authentication process by attempting to obtain an access token.  If
-# access was granted, the user will be logged in.  Otherwise,
-# authentication has failed.
-# app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/login' }));
-
 # authentication helper
 ensureAuthenticated = (req, res, next) ->
 	return next() if req.isAuthenticated()
@@ -123,7 +111,6 @@ ensureAuthenticated = (req, res, next) ->
 app.get('/', routes.index);
 app.get '/settings', ensureAuthenticated, (req, res) ->
 	res.render 'partials/settings'
-# app.get('/partials/:name', ensureAuthenticated, routes.partials);
 
 app.get('/answers', routes.answers)
 app.get('/seeanswers',ensureAuthenticated, routes.seeanswers)
@@ -138,10 +125,8 @@ app.get '/logout', (req, res) ->
 app.get '/error', (req,res) ->
 	res.send(401,'{err: please log in!}');
 
-# paypal create and execute
-# app.get('/create', routes.create)
-# app.get('/execute', routes.execute)
-app.get('/cancel', routes.cancel)
+# require('./routes/router')(GlobalAnswer, app, user).sendanswer
+# require('./routes/router')(GlobalAnswer, app, user).getanswers
 
 # answers to initial question
 app.get '/sendanswer', answer_requests.sendanswer

@@ -1,7 +1,9 @@
 mongoose = require('mongoose');
 
-GlobalAnswer = require('./../models/answers')
-user = require('./../models/User')
+# GlobalAnswer = require('./../models/answers')
+# user = require('./../models/user')
+user = mongoose.model('User')
+GlobalAnswer = mongoose.model('GlobalAnswer')
 # sort by multiple properties     
 (->
         sb = (f) ->
@@ -28,7 +30,7 @@ user = require('./../models/User')
         Array::sortBy = sb  unless Array::sortBy
 )()
 
-
+# module.exports = (GlobalAnswer, app, user) ->
 # answers to initial question
 exports.sendanswer = (req, res) ->
 	# parsedquery = parse(req.query)
@@ -187,9 +189,13 @@ exports.getanswers = (req,res) ->
 			for answer in answers
 				answersToSend.push({answerGoals: answer.answerGoals, answerFuture: answer.answerFuture, votes: answer.votes, filterNone: "none"})
 			res.send {answers: answersToSend}
+# Define module to export
+# return {
+# 	sendanswer: sendanswer
+# 	getanswers: getanswers
+# }
 
 
 
 
-
-			
+				

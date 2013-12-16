@@ -1,7 +1,9 @@
 mongoose = require('mongoose');
 
-GlobalAnswer = require('./../Models/answers')
-user = require('./../Models/User')
+# GlobalAnswer = require('./../models/answers')
+# user = require('./../models/user')
+mongoose.model('GlobalAnswer');
+mongoose.model('User');
 
 # req { age: '12-17', country: 'wrg', ethnicity: 'wrg', gender: 'wgr' }
 exports.newsettings = (req,res) -> 

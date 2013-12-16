@@ -1,8 +1,9 @@
 mongoose = require('mongoose');
 
-GlobalAnswer = require('./../Models/answers')
-user = require('./../Models/User')
-
+# GlobalAnswer = require('./../Models/answers')
+# user = require('./../Models/User')
+user = mongoose.model('User')
+GlobalAnswer = mongoose.model('GlobalAnswer')
 # req { age: '12-17', country: 'wrg', ethnicity: 'wrg', gender: 'wgr' }
 exports.upvote = (req,res) -> 
 

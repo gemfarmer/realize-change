@@ -1,6 +1,5 @@
 # renderObj = { title: app.locals.config.title, subtitle: app.locals.config.subtitle, 200}
 
-paypal = require('./paypal')
 
 exports.index = (req, res) ->
 	res.render('index', { title: app.locals.config.title, subtitle: app.locals.config.subtitle});
@@ -12,16 +11,6 @@ exports.main = (req, res) ->
 	# res.send({login: "success", username: req.user.name}, 200);
 	# res.redirect('/')
 
-# exports.partials = (req, res) ->
-# 	# console.log("req params",req.params)
-# 	renderObj = {}
-# 	renderObj.title = app.locals.config.title
-# 	renderObj.subtitle =  app.locals.config.subtitle
-# 	renderObj.username = req.user.name
-# 	renderObj.routeName = req.params.name;
-
-# 	# console.log(name)
-# 	res.render("partials/#{req.params.name}", renderObj);
 exports.answers = (req, res) ->
 	req.session.redirectURL = req.url
 	renderObj = {}
@@ -84,39 +73,3 @@ exports.mission = (req,res) ->
 exports.cancel = (req, res) ->
   res.send("The payment got canceled")
 
-
-# paypal.payment.create(payment, (error, payment) ->
-# 	if (error)
-# 		console.log(error)
-# 	else
-# 		if(payment.payer.payment_method is 'paypal')
-# 			req.session.paymentId = payment.id;
-# 			redirectUrl;
-# 			i = 0
-# 			while i < payment.links.length
-# 				i++
-# 				link = payment.links[i];
-# 				if (link.method is 'REDIRECT')
-# 					redirectUrl = link.href
-# 			res.redirect(redirectUrl)
-# 			)
-
-# exports.create = (req, res) ->
-# 	payment = {}
-# 	paypal.payment.create(payment, (error, payment) ->
-# 		if (error)
-# 			console.log(error)
-# 		else
-# 			...
-# 	)
-
-exports.execute = (req, res) ->
-	paymentId = req.session.paymentId
-	payerId = req.param('PayerID')
-	details = { "payer_id": payerId }
-	paypal.payment.execute(paymentId, details, (error, payment) ->
-		if (error)
-			console.log(error)
-		else
-			res.send("Success")
-			)
