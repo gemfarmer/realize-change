@@ -55,7 +55,9 @@ On trying to answer questions-->( why you should register Modal)
 15. 500 char limit on dreams, 200 on goals. text below indicated remaining chars
 
 
-
+Paypal stuff
+-------------
+https://devblog.paypal.com/building-a-web-app-with-node-js-the-paypal-sdk-part-2/
 
 <!-- 
 1. Reconfigure db structure 

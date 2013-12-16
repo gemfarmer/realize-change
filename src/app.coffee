@@ -20,8 +20,21 @@ GlobalAnswer = require('./Models/answers')
 FacebookStrategy = require('passport-facebook').Strategy;
 TwitterStrategy = require('passport-twitter').Strategy;
 GoogleStrategy = require('passport-google').Strategy;
+fs = require('fs')
+paypal = require('./routes/paypal')
+
+
 # config = require('./oauth.js')
 
+# paypal
+`try {
+  var configJSON = fs.readFileSync(__dirname + "/../config.json");
+  var configPaypal = JSON.parse(configJSON.toString());
+} catch (e) {
+  console.error("File config.json not found or is invalid: " + e.message);
+  process.exit(1);
+}
+paypal.init(configPaypal)`
 
 # connect to mongo
 mongoose.connect(process.env.MONGOHQ_URL or config.mongoUrl);
@@ -138,7 +151,10 @@ app.get '/logout', (req, res) ->
 app.get '/error', (req,res) ->
 	res.send(401,'{err: please log in!}');
 
-
+# paypal create and execute
+# app.get('/create', routes.create)
+# app.get('/execute', routes.execute)
+app.get('/cancel', routes.cancel)
 
 # answers to initial question
 app.get '/sendanswer', answer_requests.sendanswer

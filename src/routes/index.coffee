@@ -1,5 +1,7 @@
 # renderObj = { title: app.locals.config.title, subtitle: app.locals.config.subtitle, 200}
 
+paypal = require('./paypal')
+
 exports.index = (req, res) ->
 	res.render('index', { title: app.locals.config.title, subtitle: app.locals.config.subtitle});
 
@@ -79,3 +81,42 @@ exports.mission = (req,res) ->
 	console.log("reached mission")
 	res.render('partials/mission', { title: app.locals.config.title, subtitle: app.locals.config.subtitle})
 
+exports.cancel = (req, res) ->
+  res.send("The payment got canceled")
+
+
+# paypal.payment.create(payment, (error, payment) ->
+# 	if (error)
+# 		console.log(error)
+# 	else
+# 		if(payment.payer.payment_method is 'paypal')
+# 			req.session.paymentId = payment.id;
+# 			redirectUrl;
+# 			i = 0
+# 			while i < payment.links.length
+# 				i++
+# 				link = payment.links[i];
+# 				if (link.method is 'REDIRECT')
+# 					redirectUrl = link.href
+# 			res.redirect(redirectUrl)
+# 			)
+
+# exports.create = (req, res) ->
+# 	payment = {}
+# 	paypal.payment.create(payment, (error, payment) ->
+# 		if (error)
+# 			console.log(error)
+# 		else
+# 			...
+# 	)
+
+exports.execute = (req, res) ->
+	paymentId = req.session.paymentId
+	payerId = req.param('PayerID')
+	details = { "payer_id": payerId }
+	paypal.payment.execute(paymentId, details, (error, payment) ->
+		if (error)
+			console.log(error)
+		else
+			res.send("Success")
+			)
