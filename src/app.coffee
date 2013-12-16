@@ -4,9 +4,7 @@ console.log = if global.process.env.NODE_ENV? and global.process.env.NODE_ENV is
 # dependencies
 express = require('express');
 routes = require('./routes');
-api = require('./routes/api');
 
-vote = require('./routes/vote');
 http = require('http');
 path = require('path');
 app = express();
@@ -14,7 +12,11 @@ global.app = app;
 mongoose = require('mongoose');
 config = require('./config');
 passport = require('passport');
-
+user = require('./models/user')
+GlobalAnswer = require('./models/answers')
+answer_requests = require('./routes/answer_requests');
+account_settings = require('./routes/settings');
+vote = require('./routes/vote');
 
 FacebookStrategy = require('passport-facebook').Strategy;
 TwitterStrategy = require('passport-twitter').Strategy;
@@ -28,12 +30,9 @@ fs = require('fs')
 mongoose.connect(process.env.MONGOHQ_URL or config.mongoUrl);
 
 
-require('./models/user')
-require('./models/answers')
-user = mongoose.model('User')
-GlobalAnswer = mongoose.model('GlobalAnswer')
-answer_requests = require('./routes/answer_requests');
-account_settings = require('./routes/settings');
+
+# user = mongoose.model('User')
+# GlobalAnswer = mongoose.model('GlobalAnswer')
 
 # passport settings
 passport.serializeUser (user,done) ->

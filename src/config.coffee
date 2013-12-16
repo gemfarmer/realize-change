@@ -8,7 +8,7 @@ config = {
 			twitter: {
 
 			},
-			mongoUrl: 'mongodb://localhost/realizeChange',
+			mongoUrl: 'mongodb://localhost/realize-change',
 			title: 'RealizeChange.org',
 			subtitle: 'Making dreams come true...'
 		}
@@ -21,7 +21,7 @@ config = {
 			twitter: {
 	
 			},
-			mongoUrl: 'mongodb://localhost/realizeChange',
+			mongoUrl: 'mongodb://localhost/realize-change',
 			title: 'RealizeChange.org',
 			subtitle: 'Making dreams come true...'
 		}
