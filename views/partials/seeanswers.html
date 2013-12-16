@@ -1,19 +1,18 @@
 <script id="see-answers-template" type="text/x-handlebars-template">
 	{{#if filterNone}}
-		<h3 id="goals">"What goals do you think we should be working on to make a better world?"</div>
 
-			<p class="goal">{{answers.[0].answerGoals}}</p>
+		<h4 id="dreams">What are your dreams for the future?</h4>
 
-
-		<h3 id="dreams">"What are your dreams for the future?"</div>
-
-			<p class="dream">{{answers.[0].answerFuture}}</p>
+			<blockquote class="dream">-"{{answers.[0].answerFuture}}"</blockquote>
 
 	{{else}}
-		<h3 id="dreams">"What are your dreams for the future?"</div>
+		<h4 id="dreams">What are your dreams for the future?</h4>
+		<div id="dreamers">
 		{{#each answers}}
-			<p class="dream">{{this.answerFuture}}</p>
+			<blockquote class="dream">-"{{this.answerFuture}}"</blockquote>
+
 		{{/each}}
+		</div>
 		<button id="moreDreams" class="btn btn-default">More Dreams</button>
 	{{/if}}
 
