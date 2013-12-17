@@ -8,7 +8,7 @@ block content
 			if username
 				if username == "login"
 					p(style="color:#b94a48;") You need to login to access that page...
-					a.btn.btn-default(href='/auth/google') Login with Google
+					a.btn.btn-success.btn-lg(href='/auth/google') Login with Google
 				else
 					h2 Welcome to #{title}, #{username}!
 					a.btn.btn-success.btn-lg(href='/logout') Log Out
