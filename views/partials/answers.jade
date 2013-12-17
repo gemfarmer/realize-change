@@ -7,7 +7,7 @@ block content
 				form#answerPrompt(validate name="dreamForm")
 					h3 What are your dreams for the future?
 
-					textarea#answerFuture(required, maxlength='100', cols="100" name='answerFuture', placeholder='Voice your dreams...').col-xs-12
+					textarea#answerFuture(autofocus, required, maxlength='100', cols="100" name='answerFuture', placeholder='Voice your dreams...').col-xs-12
 					div#futureAlert.alert-danger.alert Make sure to share your dreams!
 					p.countdown You have 
 						input#countdownFuture(readonly,type="text",name="countdownFuture",size="3",value="100")
