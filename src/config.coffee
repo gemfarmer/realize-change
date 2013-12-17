@@ -10,7 +10,7 @@ config = {
 			},
 			mongoUrl: 'mongodb://localhost/realize-change',
 			title: 'Realize Change',
-			subtitle: 'Let’s dream together'
+			subtitle: 'Let’s dream together...'
 		}
 	development:
 		{ 
@@ -23,7 +23,7 @@ config = {
 			},
 			mongoUrl: 'mongodb://localhost/realize-change',
 			title: 'Realize Change',
-			subtitle: 'Let’s dream together'
+			subtitle: 'Let’s dream together...'
 		}
 }
 # module.exports = config.production
