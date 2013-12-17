@@ -6,13 +6,16 @@ block content
 			.fieldset
 				form#answerPrompt(name="dreamForm")
 					p.lead What are your dreams for the future?
-					textarea#answerFuture.form-group(type='email', maxlength='300', cols="100" name='answerFuture', required, placeholder='Voice your dreams...').col-xs-12
+
+					textarea#answerFuture.form-group(type='text', minLength='1', maxlength='500', cols="100" name='answerFuture', required, placeholder='Voice your dreams...').col-xs-12
+
 					p.countdown You have 
 						input#countdownFuture(readonly,type="text",name="countdownFuture",size="3",value="300")
 						|  characters remaining
 					br
 					p.lead What goals do you think we should be working on to make a better world?
-					textarea#answerGoals.form-group(type='email', maxlength='150', cols="100" name='answerGoals', required, placeholder='Voice our goals...').col-xs-12
+
+					textarea#answerGoals.form-group(type='text', minLength='1', maxlength='200', cols="100" name='answerGoals', required, placeholder='Voice our goals...').col-xs-12
 					p.countdown You have
 						input#countdownGoals(readonly,type="text",name="countdownGoals",size="3",value="150")
 						|  characters remaining
@@ -20,9 +23,11 @@ block content
 					button#addAnswer.btn.btn-primary.pull-right Submit Answers
 					a#seeAnswers.btn.btn-default.pull-right(href='/seeanswers') See All Answers
 					div#success.alert-success.alert.hide Your question has been successfully submitted. Ask another question!
-					
 
-	#answerRepo	
+		#answerRepo	
+			#geoChart
+			
+
 	#chart_div
 
 	//- .container

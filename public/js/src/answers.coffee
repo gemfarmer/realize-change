@@ -19,11 +19,13 @@ $ ->
 			$('#success').addClass("show")
 
 			`setTimeout(function() { $("#success").removeClass("show"); }, 3000 );`
+
 		$('#answers').hide()
 		$('#answerRepo').append('<div class="container"><div class="jumbotron row"><h3>Thanks for your participation!</h3><p>Enjoy your dream browsing</p></div></div>')
 
 		
 	
+
 	$answerFuture = $('#answerFuture')
 	$answerGoals = $('#answerGoals')
 	$answerFuture.on 'keyup', (e) ->
