@@ -13,10 +13,9 @@ block content
 					h3 Welcome to #{title}, #{username}!
 					a.btn.btn-default(href='/logout') Log Out
 			else
-				h2 #{title}
-				em #{subtitle}
-				br
-				a.btn.btn-default(href='/auth/google') Login with Google
+				h1 #{title}
+				p.lead #{subtitle}
+				a.btn.btn-success.btn-lg(href='/auth/google') Login with Google
 							
 block modals
 
