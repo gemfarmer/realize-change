@@ -22,9 +22,13 @@ exports.answers = (req, res) ->
 	renderObj.subtitle =  app.locals.config.subtitle
 
 	# conditional fixes login 'property name of undefined' error. not permanent
-	console.log("requasdfasdf", req)
+	console.log("requasdfasdf", req.headers['x-forwarded-for'], req.connection.remoteAddress)
 	if req.user is undefined
-		res.render("partials/answers", renderObj);
+		user.find {ip: req.headers['x-forwarded-for'] or req.connection.remoteAddress}, (err,data) ->
+			console.log("data",data)
+			renderObj.answerFuture = data[0].answers.answerFuture
+			renderObj.answerGoals = data[0].answers.answerGoals
+			res.render("partials/answers", renderObj);
 	else
 		user.find {_id: req.user._id}, (err,data) ->
 			console.log("data",data)

@@ -59,10 +59,12 @@ exports.sendanswer = (req, res) ->
 	else
 		console.log("else")
 		newUser = new user()
+		newUser.ip = req.headers['x-forwarded-for'] or req.connection.remoteAddress
 		newUser.answers = {
 			answerFuture : req.query.answerFuture
 			answerGoals: req.query.answerGoals
 		}
+		console.log(newUser)
 		newUser.save (err) ->
 			if(err) 
 				throw err;

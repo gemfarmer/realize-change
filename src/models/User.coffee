@@ -4,6 +4,7 @@ config = require('../config');
 console.log(config);
 
 UserSchema = new mongoose.Schema({
+	ip: String
 	name: {
 		type: String, 
 		default: "Guest"
