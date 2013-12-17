@@ -45,7 +45,7 @@ $ ->
 		val = $answerFuture.val()
 		console.log(val.length)
 		$countdownFuture = $('#countdownFuture')
-		$countdownFuture.val(100-val.length)
+		$countdownFuture.val(150-val.length)
 		
 		
 	$answerGoals.on 'keyup', (e) ->
@@ -53,7 +53,7 @@ $ ->
 		val = $answerGoals.val()
 		console.log(val.length)
 		$countdownGoals = $('#countdownGoals')
-		$countdownGoals.val(50-val.length)
+		$countdownGoals.val(100-val.length)
 		
 
 

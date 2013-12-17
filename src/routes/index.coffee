@@ -22,6 +22,7 @@ exports.answers = (req, res) ->
 	renderObj.subtitle =  app.locals.config.subtitle
 
 	# conditional fixes login 'property name of undefined' error. not permanent
+	console.log("requasdfasdf", req)
 	if req.user is undefined
 		res.render("partials/answers", renderObj);
 	else
