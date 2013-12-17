@@ -114,33 +114,32 @@ exports.getanswers = (req,res) ->
 			randTwo = secondRandom()
 
 		GlobalAnswer.find {}, (err, choice) ->
-			sendClientResponse = (choiceOne,choiceTwo) ->
+
+			res.send {answers: [choice[randOne],choice[randTwo]], filterNone: true}
+		
+		# Commented OUt --- Get rid of ranked duplication
+
+		# 	sendClientResponse = (choiceOne,choiceTwo) ->
 					
-				# console.log("rand", choice[rand])
-				# console.log("res.send",{answers: [choice[randOne], choice[randTwo]], filterNone: true})
-				res.send {answers: [choiceOne,choiceTwo], filterNone: true}
-			user.find {_id: "#{req.user._id}"}, (err, chosen) ->
+		# 		res.send {answers: [choiceOne,choiceTwo], filterNone: true}
+		# 	user.find {_id: "#{req.user._id}"}, (err, chosen) ->
 				
-				# console.log("chosen",chosen[0].optionsSeen)
-				# console.log("choice:", choice[randOne], choice[randTwo])
-				if chosen[0].optionsSeen[0]
-					for option in chosen[0].optionsSeen
-						# console.log("option",option, choice[randOne]._id, choice[randTwo]._id)
-						# console.log(typeof(option), typeof(choice[randOne]._id.toString()), choice[randOne]._id.toString())
-						# console.log("match:", (option == choice[randOne]._id), (option == choice[randTwo]._id))
+				
+		# 		if chosen[0].optionsSeen[0]
+		# 			for option in chosen[0].optionsSeen
+						
+		# 				if option is choice[randOne]._id.toString() or option is choice[randTwo]._id.toString()
+		# 					console.log("match!!!!!!!!!!!")
+		# 					randomAnswer()
+		# 					return
+		# 				else
+		# 					choiceOne = choice[randOne]
+		# 					choiceTwo = choice[randTwo]
+		# 					sendClientResponse(choiceOne,choiceTwo)
+		# 		else
+		# 			sendClientResponse(choice[randOne], choice[randTwo])
 
-						if option is choice[randOne]._id.toString() or option is choice[randTwo]._id.toString()
-							console.log("match!!!!!!!!!!!")
-							randomAnswer()
-							return
-						else
-							choiceOne = choice[randOne]
-							choiceTwo = choice[randTwo]
-							sendClientResponse(choiceOne,choiceTwo)
-				else
-					sendClientResponse(choice[randOne], choice[randTwo])
-
-		return
+		# return
 					
 						
 

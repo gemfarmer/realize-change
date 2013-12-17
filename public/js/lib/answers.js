@@ -19,9 +19,7 @@
           opacity: "1"
         });
         $('#success').addClass("show");
-        setTimeout(function() { $("#success").removeClass("show"); }, 3000 );;
-        $('#answers').hide();
-        return $('#answerRepo').append('<div class="container"><div class="jumbotron row"><h3>Thanks for your participation!</h3><p>Enjoy your dream browsing</p></div></div>');
+        return setTimeout(function() { $("#success").removeClass("show"); }, 3000 );;
       });
       $('#answers').hide();
       return $('#answerRepo').append('<div class="container"><div class="jumbotron row"><h3>Thanks for your participation!</h3><p>Enjoy your dream browsing</p></div></div>');
