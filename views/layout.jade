@@ -39,14 +39,23 @@ html
 					div.pull-right
 						ul.nav.navbar-nav.navbar-right
 							if username
-								li.dropdown
-									a.dropdown-toggle(href='#', data-toggle='dropdown')
-										| Hi #{username}!&nbsp;
-										b.caret
-									ul.dropdown-menu
-										li
-											a(href='/logout') Log Out
-											a(data-toggle="modal",data-target="#myModal") Account Settings
+								if username == "login"
+									li.dropdown
+										a.dropdown-toggle(href='#', data-toggle='dropdown')
+											| Login
+											b.caret
+										ul.dropdown-menu
+											li
+												a(href='/auth/google') with Google
+								else
+									li.dropdown
+										a.dropdown-toggle(href='#', data-toggle='dropdown')
+											| Hi #{username}!&nbsp;
+											b.caret
+										ul.dropdown-menu
+											li
+												a(href='/logout') Log Out
+												a(data-toggle="modal",data-target="#myModal") Account Settings
 
 											//- a(href="/settings") Account Settings
 
