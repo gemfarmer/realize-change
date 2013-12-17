@@ -6,6 +6,19 @@
     $seeAnswers.css({
       opacity: "0"
     });
+    $('#answerPrompt').validate({
+      rules: {
+        answerFuture: {
+          required: true,
+          text: true,
+          minlength: 1
+        },
+        answerGoals: {
+          required: true,
+          minlength: 1
+        }
+      }
+    });
     $(document).on('click', '#addAnswer', function(e) {
       var countryOfOrigin, val;
       e.preventDefault();
@@ -14,15 +27,13 @@
       val = $('#answerPrompt').serialize();
       $('#answerFuture').val('');
       $('#answerGoals').val('');
-      $.get('/sendanswer', val, function(data) {
+      return $.get('/sendanswer', val, function(data) {
         $seeAnswers.css({
           opacity: "1"
         });
         $('#success').addClass("show");
         return setTimeout(function() { $("#success").removeClass("show"); }, 3000 );;
       });
-      $('#answers').hide();
-      return $('#answerRepo').append('<div class="container"><div class="jumbotron row"><h3>Thanks for your participation!</h3><p>Enjoy your dream browsing</p></div></div>');
     });
     $answerFuture = $('#answerFuture');
     $answerGoals = $('#answerGoals');

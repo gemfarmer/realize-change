@@ -38,7 +38,7 @@ On trying to answer questions-->( why you should register Modal)
 
 1. Switch sorting on results page. Reverse order of object sent to dom. Limit number of goals to display
 2. Add error on pages when user tries to enter restricted page
-3. Comment out recursive aspect to randomize feature.
+DONE 3. Comment out recursive aspect to randomize feature.
 4. Gut and seed database
 5. Add padding to bottom, sides(when small)
 6. Change text on front page.

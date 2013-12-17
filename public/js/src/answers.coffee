@@ -5,6 +5,21 @@
 $ ->
 	$seeAnswers = $('#seeAnswers')
 	$seeAnswers.css({opacity: "0"})
+
+	$('#answerPrompt').validate({ 
+        rules: {
+            answerFuture: {
+                required: true,
+                text: true
+                minlength: 1
+            },
+            answerGoals: {
+                required: true,
+                minlength: 1
+            }
+        }
+    });
+
 	$(document).on 'click', '#addAnswer', (e) ->
 		e.preventDefault()
 		countryOfOrigin = geoplugin_countryName()
@@ -20,8 +35,8 @@ $ ->
 
 			`setTimeout(function() { $("#success").removeClass("show"); }, 3000 );`
 
-		$('#answers').hide()
-		$('#answerRepo').append('<div class="container"><div class="jumbotron row"><h3>Thanks for your participation!</h3><p>Enjoy your dream browsing</p></div></div>')
+		# $('#answers').hide()
+		# $('#answerRepo').append('<div class="container"><div class="jumbotron row"><h3>Thanks for your participation!</h3><p>Enjoy your dream browsing</p></div></div>')
 
 		
 	
