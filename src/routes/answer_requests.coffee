@@ -48,26 +48,26 @@ exports.sendanswer = (req, res) ->
 			throw err;
 
 	#Add user answer
-	if req.user.name 
-		user.find {name: "#{req.user.name}"}, (err, userToUpdate) ->
+	
+	user.find {name: "#{req.user.name}"}, (err, userToUpdate) ->
 
-			userToUpdate[0].update {answers:{answerFuture: req.query.answerFuture, answerGoals: req.query.answerGoals}}, (err) ->
-				if(err) 
-					throw err;
-			res.send({success: "success"})
-	else
-		newUser = new user()
-		newUser.name = "Guest"
-		newUser.email = "guest@guest.com"
-		newUser.answers = {
-			answerFuture : req.query.answerFuture
-			answerGoals: req.query.answerGoals
-		}
-		newUser.save (err) ->
+		userToUpdate[0].update {answers:{answerFuture: req.query.answerFuture, answerGoals: req.query.answerGoals}}, (err) ->
 			if(err) 
 				throw err;
+		res.send({success: "success"})
+	# else
+	# 	newUser = new user()
+	# 	newUser.name = "Guest"
+	# 	newUser.email = "guest@guest.com"
+	# 	newUser.answers = {
+	# 		answerFuture : req.query.answerFuture
+	# 		answerGoals: req.query.answerGoals
+	# 	}
+	# 	newUser.save (err) ->
+	# 		if(err) 
+	# 			throw err;
 			
-			console.log("New user, " + newUser.name + ", was created");
+	# 		console.log("New user, " + newUser.name + ", was created");
 
 
 

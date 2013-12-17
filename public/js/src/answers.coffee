@@ -3,43 +3,61 @@
 
 
 $ ->
+	$('#goalsAlert').hide()
+	$('#futureAlert').hide()
 	$seeAnswers = $('#seeAnswers')
 	$seeAnswers.css({opacity: "0"})
-
-	$('#answerPrompt').validate({ 
-        rules: {
-            answerFuture: {
-                required: true,
-                text: true
-                minlength: 1
-            },
-            answerGoals: {
-                required: true,
-                minlength: 1
-            }
-        }
-    });
-
+	$answers = $('#answers')
+	$answerRepo = $('#answerRepo')
+	$answerPrompt = $("#answerPrompt")
+	
+	# validateForm = (form, name, nameTwo) ->
+	# 	form.validate { 
+	# 		rules: {
+	# 			"#{name}": {
+	# 				required: true,
+	# 				text: true
+	# 			},
+	# 			"#{nameTwo}": {
+	# 				required: true,
+	# 			}
+	# 		}
+	# 	}
+	# validateForm($answerPrompt, answerFuture, answerGoals)
+	
 	$(document).on 'click', '#addAnswer', (e) ->
 		e.preventDefault()
-		countryOfOrigin = geoplugin_countryName()
-		console.log countryOfOrigin
-
 		val = $('#answerPrompt').serialize()
-		$('#answerFuture').val('')
-		$('#answerGoals').val('')
 
-		$.get '/sendanswer', val, (data) ->
-			$seeAnswers.css({opacity: "1"})
-			$('#success').addClass("show")
 
-			`setTimeout(function() { $("#success").removeClass("show"); }, 3000 );`
+		# countryOfOrigin = geoplugin_countryName()
+		# console.log countryOfOrigin
+		if $('#answerFuture').val() and $('#answerGoals').val()
 
-		# $('#answers').hide()
-		# $('#answerRepo').append('<div class="container"><div class="jumbotron row"><h3>Thanks for your participation!</h3><p>Enjoy your dream browsing</p></div></div>')
+			$answers.hide()
+			$answerRepo.append('<div class="container"><div class="jumbotron row"><h3>Thanks for your participation!</h3><a href="/auth/google">Login</a><span> to check out other people\'s </span><a href="/seeanswers">dreams</a></div></div>')
+			
+			$.get '/sendanswer', val, (data) ->
+			console.log(data)
+
+		else if $('#answerFuture').val()
+			$('#goalsAlert').show()
+			
+		else if $('#answerGoals').val()
+			$('#futureAlert').show()
 
 		
+			# $seeAnswers.css({opacity: "1"})
+			
+			
+
+		
+		
+			# $('#success').addClass("show")
+
+			# `setTimeout(function() { $("#success").removeClass("show"); }, 3000 );`
 	
+
 
 	$answerFuture = $('#answerFuture')
 	$answerGoals = $('#answerGoals')
