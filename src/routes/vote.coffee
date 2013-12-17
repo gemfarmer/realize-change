@@ -23,14 +23,14 @@ exports.upvote = (req,res) ->
 					throw err
 				
 				else if userData[0].optionsSeen
-					user.findOneAndUpdate {name: "#{req.user.name}"}, {$pushAll: {optionsSeen: [chosenId,otherId]}}, (err, data) ->
+					user.findOneAndUpdate {_id: "#{req.user._id}"}, {$pushAll: {optionsSeen: [chosenId,otherId]}}, (err, data) ->
 						if err
 							throw err
 						console.log("data",data)
 						res.send({success: "success"})
 				else
 					console.log('no array')
-					user.find {name: "#{req.user.name}"}, (data,err) ->
+					user.find {_id: "#{req.user._id}"}, (data,err) ->
 						data[0].save({optionsSeen: [req.query.chosenId, req.query.otherId]})
 						if(err) 
 							throw err;

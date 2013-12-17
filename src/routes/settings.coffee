@@ -6,7 +6,7 @@ user = require('./../models/user')
 
 # req { age: '12-17', country: 'wrg', ethnicity: 'wrg', gender: 'wgr' }
 exports.newsettings = (req,res) -> 
-	user.find {name: "#{req.user.name}"}, (err, userToUpdate) ->
+	user.find {_id: "#{req.user._id}"}, (err, userToUpdate) ->
 
 		userToUpdate[0].update {
 			demographics: {
@@ -25,7 +25,7 @@ exports.newsettings = (req,res) ->
 exports.loadsettings = (req,res) ->
 	if req.user
 
-		user.find {name: "#{req.user.name}"}, (err, userToLoad) ->
+		user.find {_id: "#{req.user._id}"}, (err, userToLoad) ->
 			console.log("user",userToLoad[0].demographics)
 			res.send(userToLoad[0].demographics)
 	else

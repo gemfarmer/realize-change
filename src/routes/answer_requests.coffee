@@ -50,7 +50,7 @@ exports.sendanswer = (req, res) ->
 
 	#Add user answer
 	if req.user
-		user.find {name: "#{req.user.name}"}, (err, userToUpdate) ->
+		user.find {_id: "#{req.user._id}"}, (err, userToUpdate) ->
 
 			userToUpdate[0].update {answers:{answerFuture: req.query.answerFuture, answerGoals: req.query.answerGoals}}, (err) ->
 				if(err) 
