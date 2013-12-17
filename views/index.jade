@@ -4,15 +4,17 @@ block content
 	.container#partialHeader
 		div.row.jumbotron#splash
 			h2 #{title}
-			p #{subtitle}
+			
 			if username
 				if username == "login"
-					p You need to login to access that page...
+					p(style="color:#b94a48;") You need to login to access that page...
 					a.btn.btn-default(href='/auth/google') Login with Google
 				else
+					p #{subtitle}
 					p Welcome #{username}
 					a.btn.btn-default(href='/logout') Log Out
 			else
+				p #{subtitle}
 				a.btn.btn-default(href='/auth/google') Login with Google
 							
 block modals

@@ -9,8 +9,8 @@ config = {
 
 			},
 			mongoUrl: 'mongodb://localhost/realize-change',
-			title: 'RealizeChange.org',
-			subtitle: 'Making dreams come true...'
+			title: 'Realize Change',
+			subtitle: 'Let’s dream together'
 		}
 	development:
 		{ 
@@ -22,8 +22,8 @@ config = {
 	
 			},
 			mongoUrl: 'mongodb://localhost/realize-change',
-			title: 'RealizeChange.org',
-			subtitle: 'Making dreams come true...'
+			title: 'Realize Change',
+			subtitle: 'Let’s dream together'
 		}
 }
 # module.exports = config.production

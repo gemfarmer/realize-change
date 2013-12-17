@@ -31,6 +31,10 @@ $ ->
 			
 		else if $('#answerGoals').val()
 			$('#futureAlert').show()
+		else
+			$('#futureAlert').show()
+			$('#goalsAlert').show()
+
 	
 
 

@@ -24,6 +24,9 @@
         return $('#goalsAlert').show();
       } else if ($('#answerGoals').val()) {
         return $('#futureAlert').show();
+      } else {
+        $('#futureAlert').show();
+        return $('#goalsAlert').show();
       }
     });
     $answerFuture = $('#answerFuture');
