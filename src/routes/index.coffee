@@ -25,10 +25,14 @@ exports.answers = (req, res) ->
 	console.log("requasdfasdf", req.headers['x-forwarded-for'], req.connection.remoteAddress)
 	if req.user is undefined
 		user.find {ip: req.headers['x-forwarded-for'] or req.connection.remoteAddress}, (err,data) ->
+			if err
+				res.render("partials/answers", renderObj);
+
 			console.log("data",data)
 			renderObj.answerFuture = data[0].answers.answerFuture
 			renderObj.answerGoals = data[0].answers.answerGoals
 			res.render("partials/answers", renderObj);
+		
 	else
 		user.find {_id: req.user._id}, (err,data) ->
 			console.log("data",data)
