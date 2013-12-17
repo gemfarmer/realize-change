@@ -1,5 +1,5 @@
-# renderObj = { title: app.locals.config.title, subtitle: app.locals.config.subtitle, 200}
-
+mongoose = require('mongoose');
+user = require('./../models/user')
 
 exports.index = (req, res) ->
 	res.render('index', { title: app.locals.config.title, subtitle: app.locals.config.subtitle});
@@ -20,14 +20,18 @@ exports.answers = (req, res) ->
 	renderObj = {}
 	renderObj.title = app.locals.config.title
 	renderObj.subtitle =  app.locals.config.subtitle
-	renderObj.apikey = 'AIzaSyB_e3Hr9YXDi4P4JLX53yZOIr1Osz7L-_U'
 
 	# conditional fixes login 'property name of undefined' error. not permanent
 	if req.user is undefined
 		res.render("partials/answers", renderObj);
 	else
-		renderObj.username = req.user.name
-		res.render("partials/answers", renderObj);
+		user.find {_id: req.user._id}, (err,data) ->
+			console.log("data",data)
+			console.log("req",req.user)
+			renderObj.answerFuture = data[0].answers.answerFuture
+			renderObj.answerGoals = data[0].answers.answerGoals
+			renderObj.username = req.user.name
+			res.render("partials/answers", renderObj);
 
 exports.seeanswers = (req, res) ->
 	req.session.redirectURL = req.url

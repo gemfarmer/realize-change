@@ -7,7 +7,7 @@ block content
 				form#answerPrompt(validate name="dreamForm")
 					h3 What are your dreams for the future?
 
-					textarea#answerFuture(autofocus, required, maxlength='100', cols="100" name='answerFuture', placeholder='Voice your dreams...').col-xs-12
+					textarea#answerFuture(autofocus, required, maxlength='100', cols="100" name='answerFuture', placeholder='Voice your dreams...').col-xs-12 #{answerFuture}
 					div#futureAlert.alert-danger.alert Make sure to share your dreams!
 					p.countdown You have 
 						input#countdownFuture(readonly,type="text",name="countdownFuture",size="3",value="100")
@@ -15,7 +15,7 @@ block content
 					br
 					h3 What goals do you think we should be working on to make a better world?
 
-					textarea#answerGoals(required, maxlength='50', cols="100" name='answerGoals', placeholder='Voice our goals...').col-xs-12
+					textarea#answerGoals(required, maxlength='50', cols="100" name='answerGoals', placeholder='Voice our goals...').col-xs-12 #{answerGoals}
 					div#goalsAlert.alert-danger.alert Make sure to share your goals!
 
 					p.countdown You have
