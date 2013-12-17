@@ -1,0 +1,9 @@
+.countdown{
+	font-size: 12px;
+}
+#futureAlert,#goalsAlert{
+	margin-top: 5px;
+	/*height:30px;*/
+	padding-bottom: 0;
+	padding-top: 0;
+}
