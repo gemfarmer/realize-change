@@ -4,8 +4,8 @@ config = require('../config');
 console.log(config);
 
 UserSchema = new mongoose.Schema({
-	name: String
-	email: {type: String, lowercase: true }
+	name: {type: String, default: "Guest"
+	email: {type: String, lowercase: true, default: "guest@guest.com" }
 	answers: { 
 		answerFuture: String
 		answerGoals: String

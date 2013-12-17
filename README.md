@@ -35,7 +35,20 @@ On trying to answer questions-->( why you should register Modal)
 	* Mission
 
 ### TO DO
-1. Configure rank queries so that they exlude any id's of the optionsSeen from the potential options
+
+1. Switch sorting on results page. Reverse order of object sent to dom. Limit number of goals to display
+2. Add error on pages when user tries to enter restricted page
+3. Comment out recursive aspect to randomize feature.
+4. Gut and seed database
+5. Add padding to bottom, sides(when small)
+6. Change text on front page.
+7. Alter settings so that undefined does not come up
+8. Add guest user default
+9. Force user to enter something into both forms
+
+
+
+1. <!-- Configure rank queries so that they exlude any id's of the optionsSeen from the potential options
 2. If user has added account settings, feed them into the form using handlebars
 3. When user clicks 'show dreams', reduce number shown to ten, and use pagination
 4. Add Sorting capabilities to results page. carat up, carat down
@@ -52,7 +65,7 @@ On trying to answer questions-->( why you should register Modal)
 12. Make sure dream submission returns green success box.
 13. After dreams submission form is completed, remove from DOM. replace with new form asking "What other questions should we ask?" Add a question or click "no thanks". Add geocharts to DOM.
 14. Paypal integration--what do we need?
-15. 500 char limit on dreams, 200 on goals. text below indicated remaining chars
+15. 500 char limit on dreams -->, 200 on goals. text below indicated remaining chars
 
 
 Paypal stuff
