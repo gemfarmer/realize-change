@@ -2,8 +2,10 @@ mongoose = require('mongoose');
 user = require('./../models/user')
 
 exports.index = (req, res) ->
-	res.render('index', { title: app.locals.config.title, subtitle: app.locals.config.subtitle});
-
+	if req.user is undefined
+		res.render("index", { title: app.locals.config.title, subtitle: app.locals.config.subtitle});
+	else
+		res.render("index", { title: app.locals.config.title, subtitle: app.locals.config.subtitle, username: req.user.name});
 
 exports.main = (req, res) ->
 	# renderObj.username = req.user.name
@@ -86,8 +88,9 @@ exports.results = (req, res) ->
 exports.mission = (req,res) ->
 	req.session.redirectURL = req.url
 	console.log("reached mission")
-	res.render('partials/mission', { title: app.locals.config.title, subtitle: app.locals.config.subtitle})
+	if req.user is undefined
+		res.render("partials/mission", { title: app.locals.config.title, subtitle: app.locals.config.subtitle});
+	else
+		res.render("partials/mission", { title: app.locals.config.title, subtitle: app.locals.config.subtitle, username: req.user.name});
 
-exports.cancel = (req, res) ->
-  res.send("The payment got canceled")
 
