@@ -1,27 +1,11 @@
 extends ../layout
-
 block content
-	//- .container#partialHeader Account Settings
-	//- 	div.row.jumbotron#answers
-	//- 		.fieldset
-	//- 			form#answerPrompt
-	//- 				p.lead What are your dreams for the future?
-	//- 				textarea#answerFuture.form-group(type='email', cols="100" name='answerFuture', required, placeholder='Voice your dreams...').col-xs-12
-	//- 				br
-	//- 				p.lead What goals do you think we should be working on to make a better world?
-	//- 				textarea#answerGoals.form-group(type='email', cols="100" name='answerGoals', required, placeholder='Voice your dreams...').col-xs-12
-	//- 				br
-	//- 				button#addAnswer.btn.btn-primary.pull-right Submit Answers
-	//- 				a#seeAnswers.btn.btn-default.pull-right(href='/seeanswers') See All Answers
-	//- 				div#success.alert-success.alert.hide Your question has been successfully submitted. Ask another question!
-
-	//- 	country, state/province, city, ethnicity, age, gender,
 	.container
 		.lightbox-body.jumbotron
 			.fieldset
 				form#demographics
-					label(for="age") Age :
-					select#age(name="age")
+					label(for="age").col-xs-4 Age :
+					select#age(name="age").col-xs-8
 						option(value='', selected='selected') Your Age
 						option(value="0-11") 11 and under
 						option(value="12-17") 12-17
@@ -33,8 +17,8 @@ block content
 
 		
 					br
-					label(for="country") Country:
-					select#country(name='country')
+					label(for="country").col-xs-4 Country:
+					select#country(name='country').col-xs-8
 						option(value='', selected='selected') Select Country
 						option(value='United States') United States
 						option(value='United Kingdom') United Kingdom
@@ -279,17 +263,36 @@ block content
 						option(value='Zimbabwe') Zimbabwe
 
 					br
-					label(for="education") Education:
-					input#education(name="education")
+					label(for="education").col-xs-4 Education:
+					input#education(name="education").col-xs-8
 					br
-					label(for="ethnicity") Ethnicity :
-					input#ethnicity(name="ethnicity")
+					label(for="ethnicity").col-xs-4 Ethnicity :
+					input#ethnicity(name="ethnicity").col-xs-8
 					br
-					label(for="gender") Gender :
-					input#gender(name="gender")
+					label(for="gender").col-xs-4 Gender :
+					input#gender(name="gender").col-xs-8
 					br
 					
 
 					button.btn.btn-default(type='button')
-						a(href='/main') Close
-					button.btn.btn-primary.btn-submit(type='submit') Save Settings	
+						a(href='/main') Close&nbsp
+					button.btn.btn-primary.btn-submit(type='submit') Save Settings
+					button.btn.btn-primary.btn-lg(data-toggle="modal",data-target="#myModal")
+
+
+	#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+					h4#myModalLabel.modal-title Modal title
+				.modal-body
+					| .afdasdfasdfasdkfjhlaskdjfhaskdjfhlaskdf
+					| .afdasdfasdfasdkfjhlaskdjfhaskdjfhlaskdf
+					| .afdasdfasdfasdkfjhlaskdjfhaskdjfhlaskdf
+					| .afdasdfasdfasdkfjhlaskdjfhaskdjfhlaskdf
+
+				.modal-footer
+					button.btn.btn-default(type='button', data-dismiss='modal') Close
+					button.btn.btn-primary(type='button') Save changes	
+	script(src="js/lib/settings.js")

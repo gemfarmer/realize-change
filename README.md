@@ -41,7 +41,7 @@ On trying to answer questions-->( why you should register Modal)
 DONE 3. Comment out recursive aspect to randomize feature.
 4. Gut and seed database
 5. Add padding to bottom, sides(when small)
-6. Change text on front page.
+DONE 6. Change text on front page.
 7. Alter settings so that undefined does not come up
 Done 8. Add guest user default in schema
 DONE 9. Force user to enter something into both forms
