@@ -16,7 +16,8 @@
     "cake": "~0.1.1",
     "coffee": "0.0.1",
     "mongoose-random": "0.0.2",
-    "paypal-rest-sdk": "~0.6.4"
+    "paypal-rest-sdk": "~0.6.4",
+    "banshee": "~0.1.0"
   },
   "engines": {
     "node": "0.10.x",
