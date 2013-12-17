@@ -1,9 +1,10 @@
 body { 
 	background-color: #eceef0;
+	color: #34495e;
 }
 
 #titleBody, h3{ 
-	color :navy;
+	color :#34495e;
 }
 
 #textBody {	
