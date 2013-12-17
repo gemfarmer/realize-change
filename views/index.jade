@@ -6,8 +6,12 @@ block content
 			h2 #{title}
 			p #{subtitle}
 			if username
-				p Welcome #{username}
-				a.btn.btn-default(href='/logout') Log Out
+				if username == "login"
+					p You need to login to access that page...
+					a.btn.btn-default(href='/auth/google') Login with Google
+				else
+					p Welcome #{username}
+					a.btn.btn-default(href='/logout') Log Out
 			else
 				a.btn.btn-default(href='/auth/google') Login with Google
 							

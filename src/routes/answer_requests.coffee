@@ -2,6 +2,7 @@ mongoose = require('mongoose');
 
 GlobalAnswer = require('./../models/answers')
 user = require('./../models/user')
+passport = require('passport')
 # user = mongoose.model('User')
 # GlobalAnswer = mongoose.model('GlobalAnswer')
 # sort by multiple properties     
@@ -48,26 +49,28 @@ exports.sendanswer = (req, res) ->
 			throw err;
 
 	#Add user answer
-	
-	user.find {name: "#{req.user.name}"}, (err, userToUpdate) ->
+	if req.user
+		user.find {name: "#{req.user.name}"}, (err, userToUpdate) ->
 
-		userToUpdate[0].update {answers:{answerFuture: req.query.answerFuture, answerGoals: req.query.answerGoals}}, (err) ->
+			userToUpdate[0].update {answers:{answerFuture: req.query.answerFuture, answerGoals: req.query.answerGoals}}, (err) ->
+				if(err) 
+					throw err;
+			res.send({success: "success"})
+	else
+		console.log("else")
+		newUser = new user()
+		newUser.answers = {
+			answerFuture : req.query.answerFuture
+			answerGoals: req.query.answerGoals
+		}
+		newUser.save (err) ->
 			if(err) 
 				throw err;
-		res.send({success: "success"})
-	# else
-	# 	newUser = new user()
-	# 	newUser.name = "Guest"
-	# 	newUser.email = "guest@guest.com"
-	# 	newUser.answers = {
-	# 		answerFuture : req.query.answerFuture
-	# 		answerGoals: req.query.answerGoals
-	# 	}
-	# 	newUser.save (err) ->
-	# 		if(err) 
-	# 			throw err;
 			
-	# 		console.log("New user, " + newUser.name + ", was created");
+			console.log("New user, " + newUser.name + ", was created", newUser.answers);
+
+			res.send({success: "success"})
+
 
 
 
@@ -170,7 +173,7 @@ exports.getanswers = (req,res) ->
 			while i < arrayLength
 				answersToSend.push({answerFuture: answers[i].answerFuture, filterFuture: "future", more: more})
 				i++
-			res.send {answers: answersToSend}
+			res.send {answers: answersToSend.reverse()}
 	else if req.query.goals is 'true'
 		console.log('all dreams')
 		GlobalAnswer.find {}, (err, answers) ->
@@ -179,7 +182,7 @@ exports.getanswers = (req,res) ->
 			answersToSend = []
 			for answer in answers
 				answersToSend.push({answerGoals: answer.answerGoals, filterGoals: "goals"})
-			res.send {answers: answersToSend}
+			res.send {answers: answersToSend.reverse()}
 	else
 		GlobalAnswer.find {}, (err, answers) ->
 			console.log("err:", err)
@@ -187,12 +190,8 @@ exports.getanswers = (req,res) ->
 			answersToSend = []
 			for answer in answers
 				answersToSend.push({answerGoals: answer.answerGoals, answerFuture: answer.answerFuture, votes: answer.votes, filterNone: "none"})
-			res.send {answers: answersToSend}
-# Define module to export
-# return {
-# 	sendanswer: sendanswer
-# 	getanswers: getanswers
-# }
+			res.send {answers: answersToSend.reverse()}
+
 
 
 

@@ -36,15 +36,16 @@ On trying to answer questions-->( why you should register Modal)
 
 ### TO DO
 
-1. Switch sorting on results page. Reverse order of object sent to dom. Limit number of goals to display
+1. DONE Switch sorting on results page. DONE Reverse order of object sent to dom . Limit number of goals to display
 2. Add error on pages when user tries to enter restricted page
 DONE 3. Comment out recursive aspect to randomize feature.
 4. Gut and seed database
 5. Add padding to bottom, sides(when small)
 6. Change text on front page.
 7. Alter settings so that undefined does not come up
-8. Add guest user default
-9. Force user to enter something into both forms
+Done 8. Add guest user default in schema
+DONE 9. Force user to enter something into both forms
+DonE 10. Add quest with sessions
 
 
 

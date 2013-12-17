@@ -11,6 +11,10 @@ exports.main = (req, res) ->
 	# res.send({login: "success", username: req.user.name}, 200);
 	# res.redirect('/')
 
+exports.login = (req,res) ->
+	res.render('index', { title: app.locals.config.title, subtitle: app.locals.config.subtitle, username: "login", 200});
+
+
 exports.answers = (req, res) ->
 	req.session.redirectURL = req.url
 	renderObj = {}

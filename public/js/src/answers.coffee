@@ -10,21 +10,7 @@ $ ->
 	$answers = $('#answers')
 	$answerRepo = $('#answerRepo')
 	$answerPrompt = $("#answerPrompt")
-	
-	# validateForm = (form, name, nameTwo) ->
-	# 	form.validate { 
-	# 		rules: {
-	# 			"#{name}": {
-	# 				required: true,
-	# 				text: true
-	# 			},
-	# 			"#{nameTwo}": {
-	# 				required: true,
-	# 			}
-	# 		}
-	# 	}
-	# validateForm($answerPrompt, answerFuture, answerGoals)
-	
+
 	$(document).on 'click', '#addAnswer', (e) ->
 		e.preventDefault()
 		val = $('#answerPrompt').serialize()
@@ -45,17 +31,6 @@ $ ->
 			
 		else if $('#answerGoals').val()
 			$('#futureAlert').show()
-
-		
-			# $seeAnswers.css({opacity: "1"})
-			
-			
-
-		
-		
-			# $('#success').addClass("show")
-
-			# `setTimeout(function() { $("#success").removeClass("show"); }, 3000 );`
 	
 
 

@@ -7,6 +7,7 @@ addAnswersToRank = (data) ->
 	$.get '/getanswers', data, (answers) ->
 		console.log("answeranswer:",answers)
 		console.log("data.future",data.future, "data.goals",data.goals)
+
 		$('#resultsRepo').html(dataTemplate(answers))
 $ ->
 

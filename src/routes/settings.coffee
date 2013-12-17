@@ -23,6 +23,16 @@ exports.newsettings = (req,res) ->
 				throw err;
 			res.send({success: "success"})
 exports.loadsettings = (req,res) ->
-	user.find {name: "#{req.user.name}"}, (err, userToLoad) ->
-		console.log("user",userToLoad[0].demographics)
-		res.send(userToLoad[0].demographics)
+	if req.user
+
+		user.find {name: "#{req.user.name}"}, (err, userToLoad) ->
+			console.log("user",userToLoad[0].demographics)
+			res.send(userToLoad[0].demographics)
+	else
+		res.send({
+				country: ""
+				ethnicity: ""
+				age: "12-17"
+				gender: ""
+				education: ""
+			})
