@@ -1,6 +1,6 @@
-vote {
+.vote {
 	color: #428bca;
 }
-vote:hover{
+.vote:hover{
 	color: #333;
 }

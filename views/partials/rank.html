@@ -1,24 +1,25 @@
 <script id="rank-template" type="text/x-handlebars-template">
 
-		<div id="goals">What goals do you think we should be working on to make a better world?</div>
-			<div class="container">
+		<table id="goals">What goals do you think we should be working on to make a better world?
+			<tr class="container">
 				
-				<div class="goal">{{answers.[0].answerGoals}}
-					<vote class="vote btn" href="" data-id="{{answers.[0]._id}}" data-idt="{{answers.[1]._id}}">
-						<i class="fa fa-thumbs-o-up"></i>
-					</vote>
-				</div>
+				<td class="goal col-xs-11">{{answers.[0].answerGoals}}</td>
+				<td class="vote btn col-xs-1" href="" data-id="{{answers.[0]._id}}" data-idt="{{answers.[1]._id}}">
+					<i class="fa fa-thumbs-o-up"></i>
+				</td>
+				
 
-			</div>
-			<div class="container">
+			</tr>
+			<tr class="container">
 	
-				<div class="goal">{{answers.[1].answerGoals}}
-					<vote class="vote btn" href="#" data-id="{{answers.[1]._id}}" data-idt="{{answers.[0]._id}}">
-						<i class="fa fa-thumbs-o-up"></i>
-					</vote>
-				</div>
+				<td class="goal col-xs-11">{{answers.[1].answerGoals}}</td>
+				<td class="vote btn col-xs-1" href="#" data-id="{{answers.[1]._id}}" data-idt="{{answers.[0]._id}}">
+					<i class="fa fa-thumbs-o-up"></i>
+				</td>
+				
 
-			</div>
+			</tr>
+		</table>
 
 
 

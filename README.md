@@ -35,8 +35,29 @@ On trying to answer questions-->( why you should register Modal)
 	* Mission
 
 ### TO DO
+1. Mobile Stuff
+	* Switch click events to tap events 
+	* settings doesn't work on mobile
+	* asc and desc on rankings don't work
+	* auto focus on dreams page
+2. Limit number of rankings to 10. Add see more button
+3. Make sure that the More? button on dreams page disappears once all have been viewed
+4. Add timestamp to new users and globalanswers
 
-1. DONE Switch sorting on results page. DONE Reverse order of object sent to dom . Limit number of goals to display
+###Brian Mingus Suggestions
+1. - Vote4goals took seconds to load
+2. - Fonts are too small - I zoomed in to 150% and that looked about right
+DONE 3. - Email address is unprofessional
+4. - Donate button could be more prominent - there is room in the header for a bar or a %goal achieved statistic.
+5.- Likewise, the Vote for us on IdeaScale button could be in the banner.
+DONE 6.- The cloud icon could go with "Begin Dreaming", and an info (circle with i inside?) icon with About Us
+7.- The submit answers button on the answer page is not centered
+- I might have gotten logged out?
+- The Vote4goals page is not intuitively clear enough about what is going on. At the very least I would stick the responses in equal width boxes so you don't have to move your mouse around as much. A small explanation about what's going on here might be helpful: The more you vote the more you effect change. Also, maybe this section should be Vote4Change ?
+- Definitely getting logged out.
+- The gap between the header and the content is too large.
+- On the seeanswers page the All Dreams listing is not rendering correctly. The bottom wrapped portion of this sentence wrenders on top of the top portion: "My hopes : wishing every part of my family and friend.. happy and healthy for ever.. more better than now... My dreams : working overseas, learn more about business and create my own business."
+<!-- 1. DONE Switch sorting on results page. DONE Reverse order of object sent to dom . Limit number of goals to display
 2. Add error on pages when user tries to enter restricted page
 DONE 3. Comment out recursive aspect to randomize feature.
 4. Gut and seed database
@@ -46,10 +67,10 @@ DONE 6. Change text on front page.
 Done 8. Add guest user default in schema
 DONE 9. Force user to enter something into both forms
 DonE 10. Add quest with sessions
+ -->
+<!-- 
 
-
-
-1. <!-- Configure rank queries so that they exlude any id's of the optionsSeen from the potential options
+Configure rank queries so that they exlude any id's of the optionsSeen from the potential options
 2. If user has added account settings, feed them into the form using handlebars
 3. When user clicks 'show dreams', reduce number shown to ten, and use pagination
 4. Add Sorting capabilities to results page. carat up, carat down
@@ -66,8 +87,8 @@ DonE 10. Add quest with sessions
 12. Make sure dream submission returns green success box.
 13. After dreams submission form is completed, remove from DOM. replace with new form asking "What other questions should we ask?" Add a question or click "no thanks". Add geocharts to DOM.
 14. Paypal integration--what do we need?
-15. 500 char limit on dreams -->, 200 on goals. text below indicated remaining chars
-
+15. 500 char limit on dreams ->, 200 on goals. text below indicated remaining chars
+ -->
 
 Paypal stuff
 -------------
