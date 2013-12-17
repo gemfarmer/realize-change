@@ -1,6 +1,7 @@
 mongoose = require('mongoose');
 user = require('./../models/user')
 
+
 exports.index = (req, res) ->
 	if req.user is undefined
 		res.render("index", { title: app.locals.config.title, subtitle: app.locals.config.subtitle});
@@ -15,6 +16,19 @@ exports.main = (req, res) ->
 
 exports.login = (req,res) ->
 	res.render('index', { title: app.locals.config.title, subtitle: app.locals.config.subtitle, username: "login", 200});
+
+# exports.populateDOM = (req, res) ->
+# 	seedData = app.locals.initialAnswers
+# 	for seed of seedData
+# 		newUser = user()
+# 		newUser.answerFuture = seed.answerFuture
+# 		newUser.answerGoals = seed.answerGoals
+# 		newUser.save (err) ->
+# 			if err
+# 				throw err
+# 			sendThatShit()
+# 	sendThatShit = () ->
+# 		res.send({success: "success"})
 
 
 exports.answers = (req, res) ->

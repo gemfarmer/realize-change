@@ -37,7 +37,7 @@
       val = $answerFuture.val();
       console.log(val.length);
       $countdownFuture = $('#countdownFuture');
-      return $countdownFuture.val(150 - val.length);
+      return $countdownFuture.val(250 - val.length);
     });
     return $answerGoals.on('keyup', function(e) {
       var $countdownGoals, val;
@@ -45,7 +45,7 @@
       val = $answerGoals.val();
       console.log(val.length);
       $countdownGoals = $('#countdownGoals');
-      return $countdownGoals.val(100 - val.length);
+      return $countdownGoals.val(150 - val.length);
     });
   });
 

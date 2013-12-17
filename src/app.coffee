@@ -118,6 +118,7 @@ app.get('/results',ensureAuthenticated, routes.results)
 app.get '/mission', routes.mission
 app.get('/main', ensureAuthenticated, routes.main);
 app.get('/login', routes.login)
+# app.get('/populateDOM', routes.populateDOM)
 app.get '/logout', (req, res) ->
 	req.logOut();
 	res.redirect('/');
