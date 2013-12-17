@@ -5,7 +5,7 @@ block content
 		div.row.jumbotron#answers
 			.fieldset
 				form#answerPrompt(validate name="dreamForm")
-					p.lead What are your dreams for the future?
+					h3 What are your dreams for the future?
 
 					textarea#answerFuture(required, maxlength='500', cols="100" name='answerFuture', placeholder='Voice your dreams...').col-xs-12
 					div#futureAlert.alert-danger.alert Make sure to share your dreams!
@@ -13,7 +13,7 @@ block content
 						input#countdownFuture(readonly,type="text",name="countdownFuture",size="3",value="300")
 						|  characters remaining
 					br
-					p.lead What goals do you think we should be working on to make a better world?
+					h3 What goals do you think we should be working on to make a better world?
 
 					textarea#answerGoals(required, maxlength='200', cols="100" name='answerGoals', placeholder='Voice our goals...').col-xs-12
 					div#goalsAlert.alert-danger.alert Make sure to share your goals!
