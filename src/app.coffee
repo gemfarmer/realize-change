@@ -56,6 +56,9 @@ passport.use(new GoogleStrategy({returnURL: config.google.returnURL, realm: conf
 				newUser = new user();
 				newUser.name = profile.displayName;
 				newUser.email = profile.emails[0].value;
+				newDate = new Date()
+				console.log("newDate",newDate)
+				newUser.date = newDate
 				console.log(newUser);
 				newUser.save (err) ->
 					if(err) 

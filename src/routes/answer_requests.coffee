@@ -44,6 +44,7 @@ exports.sendanswer = (req, res) ->
 
 	newGlobalAnswer.answerFuture = req.query.answerFuture
 	newGlobalAnswer.answerGoals = req.query.answerGoals
+	newGlobalAnswer.date = new Date()
 	newGlobalAnswer.save (err) ->
 		if(err) 
 			throw err;
@@ -60,6 +61,8 @@ exports.sendanswer = (req, res) ->
 		console.log("else")
 		newUser = new user()
 		newUser.ip = req.headers['x-forwarded-for'] or req.connection.remoteAddress
+		newDate = new Date()
+		newUser.date = newDate
 		newUser.answers = {
 			answerFuture : req.query.answerFuture
 			answerGoals: req.query.answerGoals

@@ -4,6 +4,7 @@ config = require('../config');
 console.log(config);
 
 UserSchema = new mongoose.Schema({
+	date: Object
 	ip: String
 	name: {
 		type: String, 

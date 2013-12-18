@@ -45,6 +45,7 @@ On trying to answer questions-->( why you should register Modal)
 4. Add timestamp to new users and globalanswers
 5. Add tips ? icon and expanation on each page
 6. Redo ranking system so to limit overlap
+7. General speed enhancements
 
 ###Brian Mingus Suggestions
 1. - Vote4goals took seconds to load
