@@ -6,22 +6,12 @@ console.log(config);
 UserSchema = new mongoose.Schema({
 	date: Object
 	ip: String
-	name: {
-		type: String, 
-		default: "Guest"
-	}
-	email: {
-		type: String, 
-		lowercase: true, 
-		default: "guest@guest.com" 
-	}
-	answers: { 
-		answerFuture: String
-		answerGoals: String
-	}
+	name: {type: String, default: "Guest"}
+	email: {type: String, lowercase: true, default: "guest@guest.com"}
+	answers: {answerFuture: String, answerGoals: String	}
 	optionsSeen: [String]
 	optionsChosen: [String]
-	location: String
+	location: Object
 	demographics: {
 		country: {
 			type: String, 

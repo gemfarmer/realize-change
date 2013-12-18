@@ -3,6 +3,7 @@ mongoose = require('mongoose');
 GlobalAnswer = require('./../models/answers')
 user = require('./../models/user')
 passport = require('passport')
+request = require 'request'
 # user = mongoose.model('User')
 # GlobalAnswer = mongoose.model('GlobalAnswer')
 # sort by multiple properties     
@@ -34,8 +35,10 @@ passport = require('passport')
 # module.exports = (GlobalAnswer, app, user) ->
 # answers to initial question
 exports.sendanswer = (req, res) ->
-	# parsedquery = parse(req.query)
-	# parsedBody = (req.query).parse()
+
+	# # location data function
+
+				
 
 	console.log("answerquery", req.query)
 
@@ -46,6 +49,7 @@ exports.sendanswer = (req, res) ->
 	newGlobalAnswer.answerGoals = req.query.answerGoals
 	newGlobalAnswer.date = new Date()
 	newGlobalAnswer.ip = req.headers['x-forwarded-for'] or req.connection.remoteAddress
+	# newGlobalAnswer.location = getIP(newGlobalAnswer.ip)
 	newGlobalAnswer.save (err) ->
 		if(err) 
 			throw err;
@@ -53,8 +57,8 @@ exports.sendanswer = (req, res) ->
 	#Add user answer
 	if req.user
 		user.find {_id: "#{req.user._id}"}, (err, userToUpdate) ->
-
-			userToUpdate[0].update {answers:{answerFuture: req.query.answerFuture, answerGoals: req.query.answerGoals}}, (err) ->
+			ip = req.headers['x-forwarded-for'] or req.connection.remoteAddress
+			userToUpdate[0].update {answers:{answerFuture: req.query.answerFuture, answerGoals: req.query.answerGoals}, ip: ip}, (err) ->
 				if(err) 
 					throw err;
 			res.send({success: "success"})
@@ -62,8 +66,18 @@ exports.sendanswer = (req, res) ->
 		console.log("else")
 		newUser = new user()
 		newUser.ip = req.headers['x-forwarded-for'] or req.connection.remoteAddress
+
+		getIP = (ip, location) ->
+			url = 'http://freegeoip.net/json/' + ip
+			request.get url, (error, response, body) ->
+				if !error and response.statusCode == 200
+					console.log("location",data, typeof(data))
+					return data = JSON.parse body
+		getIP(newUser.ip, location)
 		newDate = new Date()
 		newUser.date = newDate
+		# location data
+		# newUser.location = getIP(newUser.ip)
 		newUser.answers = {
 			answerFuture : req.query.answerFuture
 			answerGoals: req.query.answerGoals
@@ -202,4 +216,3 @@ exports.getanswers = (req,res) ->
 
 
 
-				

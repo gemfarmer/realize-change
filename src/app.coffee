@@ -53,11 +53,19 @@ passport.use(new GoogleStrategy({returnURL: config.google.returnURL, realm: conf
 				console.log("Found registered user: " + oldUser.name + " is logged in!");
 				done(null, oldUser);
 			else
+				# location data function
+				# getIP = (ip, location) ->
+				# 	url = 'http://freegeoip.net/json/' + ip
+				# 	request.get url, (error, response, body) ->
+				# 		if !error and response.statusCode == 200
+				# 			return data = JSON.parse body
 				newUser = new user();
 				newUser.name = profile.displayName;
 				newUser.email = profile.emails[0].value;
-				newUser.ip = req.headers['x-forwarded-for'] or req.connection.remoteAddress
+				# console.log("REQ, req", req.headers['x-forwarded-for'] or req.connection.remoteAddress)
+				# newUser.ip = req.headers['x-forwarded-for'] or req.connection.remoteAddress
 				newDate = new Date()
+				# newUser.location = getIP(newUser.ip)
 				console.log("newDate",newDate)
 				newUser.date = newDate
 				console.log(newUser);
