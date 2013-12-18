@@ -45,6 +45,7 @@ exports.sendanswer = (req, res) ->
 	newGlobalAnswer.answerFuture = req.query.answerFuture
 	newGlobalAnswer.answerGoals = req.query.answerGoals
 	newGlobalAnswer.date = new Date()
+	newGlobalAnswer.ip = req.headers['x-forwarded-for'] or req.connection.remoteAddress
 	newGlobalAnswer.save (err) ->
 		if(err) 
 			throw err;

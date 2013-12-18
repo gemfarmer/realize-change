@@ -5,6 +5,7 @@ GlobalAnswerSchema = new mongoose.Schema({
 	answerGoals: String
 	votes: {type: Number, default: 0}
 	date: Object
+	ip: String
 });
  
 
