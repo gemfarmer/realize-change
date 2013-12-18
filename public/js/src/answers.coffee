@@ -37,10 +37,10 @@ $ ->
 			$('#goalsAlert').show()
 
 
-	$clear = $('#clearAnswer')
-	$clearAnswer.on 'click', (e) ->
-		e.preventDefault()
-		$("#answerPrompt")[0].reset()
+	# $clear = $('#clearAnswer')
+	# $clearAnswer.on 'click', (e) ->
+	# 	e.preventDefault()
+	# 	$("#answerPrompt")[0].reset()
 
 
 	$answerFuture = $('#answerFuture')

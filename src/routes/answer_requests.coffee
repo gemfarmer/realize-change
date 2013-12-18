@@ -58,22 +58,22 @@ exports.sendanswer = (req, res) ->
 	if req.user
 		user.find {_id: "#{req.user._id}"}, (err, userToUpdate) ->
 			ip = req.headers['x-forwarded-for'] or req.connection.remoteAddress
-			userToUpdate[0].update {answers:{answerFuture: req.query.answerFuture, answerGoals: req.query.answerGoals}, ip: ip}, (err) ->
+			userToUpdate[0].update {answers:{answerFuture: req.query.answerFuture, answerGoals: req.query.answerGoals}}, (err) ->
 				if(err) 
 					throw err;
-			res.send({success: "success"})
+				res.send({success: "success"})
 	else
 		console.log("else")
 		newUser = new user()
 		newUser.ip = req.headers['x-forwarded-for'] or req.connection.remoteAddress
 
-		getIP = (ip, location) ->
-			url = 'http://freegeoip.net/json/' + ip
-			request.get url, (error, response, body) ->
-				if !error and response.statusCode == 200
-					console.log("location",data, typeof(data))
-					return data = JSON.parse body
-		getIP(newUser.ip, location)
+		# getIP = (ip, location) ->
+		# 	url = 'http://freegeoip.net/json/' + ip
+		# 	request.get url, (error, response, body) ->
+		# 		if !error and response.statusCode == 200
+		# 			console.log("location",data, typeof(data))
+		# 			return data = JSON.parse body
+		# getIP(newUser.ip, location)
 		newDate = new Date()
 		newUser.date = newDate
 		# location data
