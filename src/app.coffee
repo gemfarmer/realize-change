@@ -62,8 +62,7 @@ passport.use(new GoogleStrategy({returnURL: config.google.returnURL, realm: conf
 				newUser = new user();
 				newUser.name = profile.displayName;
 				newUser.email = profile.emails[0].value;
-				# console.log("REQ, req", req.headers['x-forwarded-for'] or req.connection.remoteAddress)
-				# newUser.ip = req.headers['x-forwarded-for'] or req.connection.remoteAddress
+				
 				newDate = new Date()
 				# newUser.location = getIP(newUser.ip)
 				console.log("newDate",newDate)
