@@ -11,10 +11,11 @@ $ ->
 	$answerRepo = $('#answerRepo')
 	$answerPrompt = $("#answerPrompt")
 
+
+
 	$(document).on 'click', '#addAnswer', (e) ->
 		e.preventDefault()
 		val = $('#answerPrompt').serialize()
-
 
 		# countryOfOrigin = geoplugin_countryName()
 		# console.log countryOfOrigin
@@ -35,7 +36,11 @@ $ ->
 			$('#futureAlert').show()
 			$('#goalsAlert').show()
 
-	
+
+	$clear = $('#clearAnswer')
+	$clearAnswer.on 'click', (e) ->
+		e.preventDefault()
+		$("#answerPrompt")[0].reset()
 
 
 	$answerFuture = $('#answerFuture')
@@ -54,7 +59,9 @@ $ ->
 		console.log(val.length)
 		$countdownGoals = $('#countdownGoals')
 		$countdownGoals.val(150-val.length)
-		
+	
+
+
 
 
 
