@@ -16,6 +16,8 @@ html
 			link(href='css/index.min.css', rel='stylesheet', media='screen')  
 			link(href='css/mission.min.css', rel='stylesheet', media='screen')
 			link(href='css/results.min.css', rel='stylesheet', media='screen')
+			link(href='css/socialshare.min.css', rel='stylesheet', media='screen')
+
 		else if global.process.env.NODE_ENV == 'development'
 
 			link(href='css/main.css', rel='stylesheet', media='screen')
@@ -25,6 +27,8 @@ html
 			link(href='css/index.css', rel='stylesheet', media='screen')  
 			link(href='css/mission.css', rel='stylesheet', media='screen')
 			link(href='css/results.css', rel='stylesheet', media='screen')
+			link(href='css/socialshare.css', rel='stylesheet', media='screen')
+
 		
 	body
 		div.navbar.navbar-default.navbar-fixed-top
@@ -88,8 +92,13 @@ html
 
 
 				.container
-					center
-						form(action="https://www.paypal.com/cgi-bin/webscr",method="post",target="_top")
+						//- div.pull-left#example1
+						#shareme(data-url="http://sharrre.com/",data-text="Make your sharing widget with Sharrre (jQuery Plugin)")
+
+						//- #twitter(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="Tweet")
+						//- #facebook(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="Like")
+						//- #googleplus(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="+1")
+						form.pull-right(action="https://www.paypal.com/cgi-bin/webscr",method="post",target="_top")
 							input(type="hidden",name="cmd",value="_s-xclick")
 							input(type="hidden",name="hosted_button_id",value="MZ8TYAL3NBYVJ")
 							input(type="image",src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif",border="0",name="submit",alt="PayPal- The safer, easier way to pay online!",width="auto",height="50px")
@@ -389,6 +398,7 @@ html
 		script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
 		script(src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js")
 		script(src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js")
+		script(src="/js/sharrre.min.js")
 		//- script(src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js")
 		//- script(type="text/javascript", src="https://www.google.com/jsapi?key=AIzaSyB_e3Hr9YXDi4P4JLX53yZOIr1Osz7L-_U")
 		script(type="text/javascript", src="https://www.google.com/jsapi")
@@ -402,6 +412,8 @@ html
 			script(src="js/lib/results.min.js")
 			script(src="js/lib/main.min.js")
 			script(src="js/lib/settings.min.js")
+			script(src="js/lib/socialshare.min.js")
+
 		else if global.process.env.NODE_ENV == 'development'
 			script(src="js/lib/seeanswers.js")
 			script(src='js/lib/answers.js')
@@ -409,6 +421,7 @@ html
 			script(src="js/lib/results.js")
 			script(src="js/lib/main.js")
 			script(src="js/lib/settings.js")
+			script(src="js/lib/socialshare.js")
 		
 		
 

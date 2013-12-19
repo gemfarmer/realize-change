@@ -25,6 +25,7 @@ task 'dev', 'Setup my dev system', () ->
   run 'banshee', 'public/js/lib/results.js:public/js/lib/results.min.js'
   run 'banshee', 'public/js/lib/seeanswers.js:public/js/lib/seeanswers.min.js'
   run 'banshee', 'public/js/lib/settings.js:public/js/lib/settings.min.js'
+  run 'banshee', 'public/js/lib/socialshare.js:public/js/lib/socialshare.min.js'
 
   run 'banshee', 'public/css/answers.css:public/css/answers.min.css'
   run 'banshee', 'public/css/change.css:public/css/change.min.css'
@@ -33,5 +34,7 @@ task 'dev', 'Setup my dev system', () ->
   run 'banshee', 'public/css/mission.css:public/css/mission.min.css'
   run 'banshee', 'public/css/results.css:public/css/results.min.css'
   run 'banshee', 'public/css/seeanswers.css:public/css/seeanswers.min.css'
+  run 'banshee', 'public/css/socialshare.css:public/css/socialshare.min.css'
+
 
   run 'supervisor', 'server'

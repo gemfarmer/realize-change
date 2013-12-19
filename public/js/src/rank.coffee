@@ -9,7 +9,6 @@ addAnswersToRank = (data) ->
 		console.log("data.future",data.future, "data.goals",data.goals)
 		$('#choicesRepo').html(dataTemplate(answers))
 $ ->
-
 	addAnswersToRank({randomize: true, future: false, goals: true})
 
 	$('#moreToRank').on 'click', (e) ->

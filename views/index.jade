@@ -11,10 +11,20 @@ block content
 					a.btn.btn-success.btn-lg(href='/auth/google') Login with Google
 				else
 					h2 Welcome to #{title}, #{username}!
+						
 					a.btn.btn-success.btn-lg(href='/logout') Log Out
+						//- #twitter(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="Tweet")
+						//- #facebook(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="Like")
+						//- #googleplus(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="+1")
 			else
 				h1 #{title}
 				p.lead #{subtitle}
+				
 				a.btn.btn-success.btn-lg(href='/auth/google') Login with Google
+				//- #shareme(data-url="http://sharrre.com/",data-text="Make your sharing widget with Sharrre (jQuery Plugin)")
+
+						//- #twitter(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="Tweet")
+						//- #facebook(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="Like")
+						//- #googleplus(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="+1")
 				//- a(href="/populateDOM") Populate
 							
