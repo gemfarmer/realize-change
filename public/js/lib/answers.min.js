@@ -32,7 +32,7 @@
     $clear = $('#clearAnswer');
     $clearAnswer.on('click', function(e) {
       e.preventDefault();
-      return $("#answerPrompt")[0].reset();
+      return $("#answerPrompt").reset();
     });
     $answerFuture = $('#answerFuture');
     $answerGoals = $('#answerGoals');

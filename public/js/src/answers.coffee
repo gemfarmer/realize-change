@@ -40,7 +40,7 @@ $ ->
 	$clear = $('#clearAnswer')
 	$clearAnswer.on 'click', (e) ->
 		e.preventDefault()
-		$("#answerPrompt")[0].reset()
+		$("#answerPrompt").reset()
 
 
 	$answerFuture = $('#answerFuture')
