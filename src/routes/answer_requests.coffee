@@ -94,7 +94,8 @@ exports.sendanswer = (req, res) ->
 
 
 #instantiate shuffled answers. Used on seeanswers page
-shuffledAnswers = []
+shuffledDreams = []
+shuffledGoals = []
 
 # get answers from database
 exports.getanswers = (req,res) ->
@@ -178,6 +179,7 @@ exports.getanswers = (req,res) ->
 		sortAsc()
 	else if req.query.desc is 'true'
 		sortDesc()
+	# See Answers Section
 	else if req.query.future is 'true'
 		console.log('all dreams')
 		
@@ -195,14 +197,14 @@ exports.getanswers = (req,res) ->
 			
 			if arrayLength is '10'
 				console.log "INNNNNNNNN"
-				shuffledAnswers = _.shuffle(answers)
+				shuffledDreams = _.shuffle(answers)
 			else
-				shuffledAnswers = shuffledAnswers
+				shuffledDreams = shuffledDreams
 			if answers.length < arrayLength
 				arrayLength = answers.length
 				more = false
 			while i < arrayLength
-				answersToSend.push({answerFuture: shuffledAnswers[i].answerFuture, filterFuture: "future", more: more})
+				answersToSend.push({answerFuture: shuffledDreams[i].answerFuture, filterFuture: "future", more: more})
 				i++
 			# answersToSendShuffled = _.shuffle(answersToSend)
 			console.log("answersToSend",answersToSend, "shuffle", answersToSend)
@@ -216,15 +218,17 @@ exports.getanswers = (req,res) ->
 			answersToSend = []
 			for answer in answers
 				answersToSend.push({answerGoals: answer.answerGoals, filterGoals: "goals"})
-			res.send {answers: answersToSend.reverse()}
+			res.send {answers: answersToSend}
 	else
+		# Resuls Section
 		GlobalAnswer.find {}, (err, answers) ->
 			console.log("err:", err)
 			console.log("answer",answers);
+			shuffledGoals = _.shuffle(answers)
 			answersToSend = []
-			for answer in answers
+			for answer in shuffledGoals
 				answersToSend.push({answerGoals: answer.answerGoals, answerFuture: answer.answerFuture, votes: answer.votes, filterNone: "none"})
-			res.send {answers: answersToSend.reverse()}
+			res.send {answers: answersToSend}
 
 
 
