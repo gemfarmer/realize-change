@@ -9,10 +9,14 @@ block content
 				if username == "login"
 					p(style="color:#b94a48;") You need to login to access that page...
 					a.btn.btn-success.btn-lg(href='/auth/google') Login with Google
+					#shareme(data-url="http://realizechange.herokuapp.com/",data-text="Realize Change: Let's dream together")
+
 				else
 					h2 Welcome to #{title}, #{username}!
 						
 					a.btn.btn-success.btn-lg(href='/logout') Log Out
+					#shareme(data-url="http://realizechange.herokuapp.com/",data-text="Realize Change: Let's dream together")
+
 						//- #twitter(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="Tweet")
 						//- #facebook(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="Like")
 						//- #googleplus(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="+1")
@@ -21,6 +25,8 @@ block content
 				p.lead #{subtitle}
 				
 				a.btn.btn-success.btn-lg(href='/auth/google') Login with Google
+				#shareme(data-url="http://realizechange.herokuapp.com/",data-text="Realize Change: Let's dream together")
+
 				//- #shareme(data-url="http://sharrre.com/",data-text="Make your sharing widget with Sharrre (jQuery Plugin)")
 
 						//- #twitter(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="Tweet")
