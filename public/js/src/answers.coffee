@@ -38,10 +38,10 @@ $ ->
 
 
 
-	$clear = $('#clearAnswer')
-	$clearAnswer.on 'click', (e) ->
-		e.preventDefault()
-		$("#answerPrompt").reset()
+	# $clear = $('#clearAnswer')
+	# $clearAnswer.on 'click', (e) ->
+	# 	e.preventDefault()
+	# 	$("#answerPrompt").reset()
 
 
 	$answerFuture = $('#answerFuture')
