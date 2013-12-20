@@ -196,25 +196,19 @@ exports.getanswers = (req,res) ->
 
 			
 			if arrayLength is '10'
-				console.log "INNNNNNNNN"
 				shuffledDreams = _.shuffle(answers)
-			else
-				shuffledDreams = shuffledDreams
+			
 			if answers.length < arrayLength
 				arrayLength = answers.length
 				more = false
 			while i < arrayLength
 				answersToSend.push({answerFuture: shuffledDreams[i].answerFuture, filterFuture: "future", more: more})
 				i++
-			# answersToSendShuffled = _.shuffle(answersToSend)
-			console.log("answersToSend",answersToSend, "shuffle", answersToSend)
-
 			res.send {answers: answersToSend}
 	else if req.query.goals is 'true'
 		console.log('all dreams')
 		GlobalAnswer.find {}, (err, answers) ->
-			console.log("err:", err)
-			console.log("answer",answers);
+
 			answersToSend = []
 			for answer in answers
 				answersToSend.push({answerGoals: answer.answerGoals, filterGoals: "goals"})
@@ -222,12 +216,23 @@ exports.getanswers = (req,res) ->
 	else
 		# Resuls Section
 		GlobalAnswer.find {}, (err, answers) ->
-			console.log("err:", err)
-			console.log("answer",answers);
-			shuffledGoals = _.shuffle(answers)
+
+			# console.log("answer",answers);
+			# shuffledGoals = _.shuffle(answers)
 			answersToSend = []
-			for answer in shuffledGoals
-				answersToSend.push({answerGoals: answer.answerGoals, answerFuture: answer.answerFuture, votes: answer.votes, filterNone: "none"})
+
+			i = 0
+			more = true
+			arrayLength = req.query.goalsToShow
+
+			if arrayLength is '10'
+				shuffledGoals = _.shuffle(answers)
+			if answers.length < arrayLength
+				arrayLength = answers.length
+				more = false
+			while i < arrayLength
+				answersToSend.push({answerGoals: shuffledGoals[i].answerGoals, votes: shuffledGoals[i].votes, filterNone: "none", more: more})
+				i++
 			res.send {answers: answersToSend}
 
 

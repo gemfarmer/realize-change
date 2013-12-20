@@ -5,8 +5,8 @@ dataTemplate = Handlebars.compile(source);
 appendAnswers = (data) ->
 	$answerRepo = $('#answerRepo')
 	$.get '/getanswers', data, (answers) ->
-		console.log("answeranswer:",answers)
-		console.log("data.future",data.future, "data.goals",data.goals, "data",data)
+		# console.log("answeranswer:",answers)
+		# console.log("data.future",data.future, "data.goals",data.goals, "data",data)
 		$answerRepo.html(dataTemplate(answers))
 
 $ ->

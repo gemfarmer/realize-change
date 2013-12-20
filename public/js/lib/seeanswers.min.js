@@ -10,8 +10,6 @@
     var $answerRepo;
     $answerRepo = $('#answerRepo');
     return $.get('/getanswers', data, function(answers) {
-      console.log("answeranswer:", answers);
-      console.log("data.future", data.future, "data.goals", data.goals, "data", data);
       return $answerRepo.html(dataTemplate(answers));
     });
   };

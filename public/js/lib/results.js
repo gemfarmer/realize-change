@@ -8,19 +8,20 @@
 
   addAnswersToRank = function(data) {
     return $.get('/getanswers', data, function(answers) {
-      console.log("answeranswer:", answers);
-      console.log("data.future", data.future, "data.goals", data.goals);
       return $('#resultsRepo').html(dataTemplate(answers));
     });
   };
 
   $(function() {
+    var goalsToShow;
+    goalsToShow = 10;
     addAnswersToRank({
       randomize: false,
       future: false,
       goals: false,
       asc: false,
-      desc: false
+      desc: false,
+      goalsToShow: goalsToShow
     });
     $(document).on('click', '.sortAsc', function() {
       return addAnswersToRank({
@@ -28,16 +29,29 @@
         future: false,
         goals: false,
         asc: true,
-        desc: false
+        desc: false,
+        goalsToShow: goalsToShow
       });
     });
-    return $(document).on('click', '.sortDesc', function() {
+    $(document).on('click', '.sortDesc', function() {
       return addAnswersToRank({
         randomize: false,
         future: false,
         goals: false,
         asc: false,
-        desc: true
+        desc: true,
+        goalsToShow: goalsToShow
+      });
+    });
+    return $(document).on('click', '#moreResults', function() {
+      goalsToShow += 10;
+      return addAnswersToRank({
+        randomize: false,
+        future: false,
+        goals: false,
+        asc: false,
+        desc: false,
+        goalsToShow: goalsToShow
       });
     });
   });
