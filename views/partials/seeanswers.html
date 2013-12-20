@@ -7,6 +7,7 @@
 			<blockquote class="dream">-"{{answers.[0].answerFuture}}"</blockquote>
 
 	{{else}}
+
 		<h4 id="dreams">What are your dreams for the future?</h4>
 		<div id="dreamers">
 		{{#each answers}}
@@ -14,7 +15,9 @@
 
 		{{/each}}
 		</div>
-		<button id="moreDreams" class="btn btn-default">Show More?</button>
+		{{#if answers.[0].more}}
+			<button id="moreDreams" class="btn btn-default">Show More?</button>
+		{{/if}}
 	{{/if}}
 
 </script>

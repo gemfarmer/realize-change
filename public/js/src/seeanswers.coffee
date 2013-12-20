@@ -6,9 +6,9 @@ appendAnswers = (data) ->
 	$answerRepo = $('#answerRepo')
 	$.get '/getanswers', data, (answers) ->
 		console.log("answeranswer:",answers)
-		console.log("data.future",data.future, "data.goals",data.goals)
+		console.log("data.future",data.future, "data.goals",data.goals, "data",data)
 		$answerRepo.html(dataTemplate(answers))
-		
+
 $ ->
 	dreamsToShow = 10
 	$moreDreams=$('#moreDreams')
@@ -19,6 +19,9 @@ $ ->
 		appendAnswers({randomize: true, future: true, goals: true})
 	$('#alldreams').on 'click', (e) ->
 		e.preventDefault()
+		$('#splash').prepend('<div class="btn btn-success" id="oneDream">New Dream</div>')
+		$('#alldreams').hide()
+
 		$(document).on 'click', '#moreDreams', (e) ->
 			dreamsToShow += 10
 			e.preventDefault()
@@ -27,6 +30,12 @@ $ ->
 			
 
 		return appendAnswers({randomize: false, future: true, goals: false, dreamsToShow: dreamsToShow})
+	$(document).on 'click', '#oneDream', (e) ->
+		e.preventDefault()
+		$('#alldreams').show()
+		$('#oneDream').hide()
+		appendAnswers({randomize: true, future: true, goals: true})
+
 
 
 # `google.load('visualization', '1', {'packages': ['geochart']});

@@ -181,7 +181,7 @@ exports.getanswers = (req,res) ->
 		GlobalAnswer.find {}, (err, answers) ->
 			console.log("err:", err)
 			
-			console.log("answer",answers);
+			# console.log("answer",answers);
 			# Instantiate Vars
 			answersToSend = []
 			i = 0
@@ -193,6 +193,7 @@ exports.getanswers = (req,res) ->
 			while i < arrayLength
 				answersToSend.push({answerFuture: answers[i].answerFuture, filterFuture: "future", more: more})
 				i++
+			console.log "answersToSend", answersToSend
 			res.send {answers: answersToSend.reverse()}
 	else if req.query.goals is 'true'
 		console.log('all dreams')
