@@ -29,6 +29,14 @@
         return $('#goalsAlert').show();
       }
     });
+<<<<<<< HEAD
+=======
+    $clear = $('#clearAnswer');
+    $clearAnswer.on('click', function(e) {
+      e.preventDefault();
+      return $("#answerPrompt").reset();
+    });
+>>>>>>> 64b4155252376513f16834f93021e921f6326e7f
     $answerFuture = $('#answerFuture');
     $answerGoals = $('#answerGoals');
     $answerFuture.on('keyup', function(e) {
