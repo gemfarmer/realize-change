@@ -11,7 +11,7 @@
     $answerRepo = $('#answerRepo');
     return $.get('/getanswers', data, function(answers) {
       console.log("answeranswer:", answers);
-      console.log("data.future", data.future, "data.goals", data.goals);
+      console.log("data.future", data.future, "data.goals", data.goals, "data", data);
       return $answerRepo.html(dataTemplate(answers));
     });
   };
@@ -33,8 +33,10 @@
         goals: true
       });
     });
-    return $('#alldreams').on('click', function(e) {
+    $('#alldreams').on('click', function(e) {
       e.preventDefault();
+      $('#splash').prepend('<div class="btn btn-success" id="oneDream">New Dream</div>');
+      $('#alldreams').hide();
       $(document).on('click', '#moreDreams', function(e) {
         dreamsToShow += 10;
         e.preventDefault();
@@ -50,6 +52,16 @@
         future: true,
         goals: false,
         dreamsToShow: dreamsToShow
+      });
+    });
+    return $(document).on('click', '#oneDream', function(e) {
+      e.preventDefault();
+      $('#alldreams').show();
+      $('#oneDream').hide();
+      return appendAnswers({
+        randomize: true,
+        future: true,
+        goals: true
       });
     });
   });
