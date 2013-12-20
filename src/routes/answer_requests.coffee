@@ -4,6 +4,7 @@ GlobalAnswer = require('./../models/answers')
 user = require('./../models/user')
 passport = require('passport')
 request = require 'request'
+_ = require 'underscore'
 # user = mongoose.model('User')
 # GlobalAnswer = mongoose.model('GlobalAnswer')
 # sort by multiple properties     
@@ -92,7 +93,8 @@ exports.sendanswer = (req, res) ->
 			res.send({success: "success"})
 
 
-
+#instantiate shuffled answers. Used on seeanswers page
+shuffledAnswers = []
 
 # get answers from database
 exports.getanswers = (req,res) ->
@@ -178,6 +180,8 @@ exports.getanswers = (req,res) ->
 		sortDesc()
 	else if req.query.future is 'true'
 		console.log('all dreams')
+		
+		
 		GlobalAnswer.find {}, (err, answers) ->
 			console.log("err:", err)
 			
@@ -187,12 +191,22 @@ exports.getanswers = (req,res) ->
 			i = 0
 			more = true
 			arrayLength = req.query.dreamsToShow
+
+			
+			if arrayLength is '10'
+				console.log "INNNNNNNNN"
+				shuffledAnswers = _.shuffle(answers)
+			else
+				shuffledAnswers = shuffledAnswers
 			if answers.length < arrayLength
 				arrayLength = answers.length
 				more = false
 			while i < arrayLength
-				answersToSend.push({answerFuture: answers[i].answerFuture, filterFuture: "future", more: more})
+				answersToSend.push({answerFuture: shuffledAnswers[i].answerFuture, filterFuture: "future", more: more})
 				i++
+			# answersToSendShuffled = _.shuffle(answersToSend)
+			console.log("answersToSend",answersToSend, "shuffle", answersToSend)
+
 			res.send {answers: answersToSend}
 	else if req.query.goals is 'true'
 		console.log('all dreams')
