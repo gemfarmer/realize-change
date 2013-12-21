@@ -1,25 +1,32 @@
 <script id="rank-template" type="text/x-handlebars-template">
-		<legend>What goals do you think we should be working on to make a better world?</legend>
-		<table id="goals">
-			<tr class="container">
-				
-				<td class="goal col-xs-11">{{answers.[0].answerGoals}}</td>
-				<td class="vote btn col-xs-1" href="" data-id="{{answers.[0]._id}}" data-idt="{{answers.[1]._id}}">
-					<i class="fa fa-thumbs-o-up"></i>
-				</td>
-				
+	{{#if done}}
+		<div class="row jumbotron" id="answers">
+			<h2>Thanks for your votes!</h1>
+			<p>There are currently no more goals to vote on   :(</p>
+		</div>
+		{{else}}
+			<legend>What goals do you think we should be working on to make a better world?</legend>
+			<table id="goals">
+				<tr class="container">
+					
+					<td class="goal col-xs-11">{{answers.[0].answerGoals}}</td>
+					<td class="vote btn col-xs-1" href="" data-id="{{answers.[0]._id}}" data-idt="{{answers.[1]._id}}">
+						<i class="fa fa-thumbs-o-up"></i>
+					</td>
+					
 
-			</tr>
-			<tr class="container">
-	
-				<td class="goal col-xs-11">{{answers.[1].answerGoals}}</td>
-				<td class="vote btn col-xs-1" href="#" data-id="{{answers.[1]._id}}" data-idt="{{answers.[0]._id}}">
-					<i class="fa fa-thumbs-o-up"></i>
-				</td>
-				
+				</tr>
+				<tr class="container">
+		
+					<td class="goal col-xs-11">{{answers.[1].answerGoals}}</td>
+					<td class="vote btn col-xs-1" href="#" data-id="{{answers.[1]._id}}" data-idt="{{answers.[0]._id}}">
+						<i class="fa fa-thumbs-o-up"></i>
+					</td>
+					
 
-			</tr>
-		</table>
+				</tr>
+			</table>
+	{{/if}}
 
 
 

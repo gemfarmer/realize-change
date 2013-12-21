@@ -104,72 +104,56 @@ exports.getanswers = (req,res) ->
 
 	
 	sortAsc = () ->
-		console.log 'asc'
+		# console.log 'asc'
 		GlobalAnswer.find {}, (err, results) ->
 			sortedResults = results.sortBy () ->
 				return [this.votes]
-			console.log 'sorted', sortedResults
+			# console.log 'sorted', sortedResults
 			res.send {answers: sortedResults}
 
 	sortDesc = () ->
-		console.log 'desc'
+		# console.log 'desc'
 		GlobalAnswer.find {}, (err, results) ->
 			sortedResults = results.sortBy () ->
 				return [-this.votes]
-			console.log 'sorted', sortedResults
+			# console.log 'sorted', sortedResults
 			res.send {answers: sortedResults}
 
 
 	randomAnswer = () ->
-		# Instantiate Rand
-		randOne = 0
-		randTwo = 0
-		# Count total answers
-		GlobalAnswer.count {}, (err, num) ->
-			# console.log("num",num)
-			console.log("err", err)
-			randOne = Math.floor(Math.random() * num)
-			console.log("first",randOne)
-			secondRandom = () ->
-				output = Math.floor(Math.random() * num)
-				console.log("second", output)
-				if output is randOne
-					secondRandom()
-				else
-					output
-			randTwo = secondRandom()
-
 		GlobalAnswer.find {}, (err, choice) ->
+			console.log("choice",choice)
+			answerIDs = _.map choice, (item) ->
+				# console.log("answertype",typeof(item._id))
+				return item._id.toString()
+			# console.log("answerIDs",answerIDs)
+			# console.log("choice", choice)
+			user.find {_id: "#{req.user._id}"}, (err, users) ->
+				sendClientResponse = (choiceOne,choiceTwo,done) ->
+					res.send {answers: [choiceOne,choiceTwo], filterNone: true, done: done}
 
-			res.send {answers: [choice[randOne],choice[randTwo]], filterNone: true}
-		
-		# Commented OUt --- Get rid of ranked duplication
 
-		# 	sendClientResponse = (choiceOne,choiceTwo) ->
+				# finds values that have not been seen by the user
+				differenceArray = _.difference(answerIDs, users[0].optionsSeen)
+				# shuffle to randomize
+				shuffled = _.shuffle(differenceArray)
+				randOne = {}
+				randTwo = {}
+				for option in choice
+					optionString = option._id.toString()
 					
-		# 		res.send {answers: [choiceOne,choiceTwo], filterNone: true}
-		# 	user.find {_id: "#{req.user._id}"}, (err, chosen) ->
-				
-				
-		# 		if chosen[0].optionsSeen[0]
-		# 			for option in chosen[0].optionsSeen
-						
-		# 				if option is choice[randOne]._id.toString() or option is choice[randTwo]._id.toString()
-		# 					console.log("match!!!!!!!!!!!")
-		# 					randomAnswer()
-		# 					return
-		# 				else
-		# 					choiceOne = choice[randOne]
-		# 					choiceTwo = choice[randTwo]
-		# 					sendClientResponse(choiceOne,choiceTwo)
-		# 		else
-		# 			sendClientResponse(choice[randOne], choice[randTwo])
+					if optionString is shuffled[0]
+						randOne = option
+					if optionString is shuffled[1]
+						randTwo = option
+					else 
 
-		# return
-					
-						
-
-								
+				# console.log("indexed",indexed)
+				if differenceArray.length > 1
+					sendClientResponse(randOne, randTwo, false)
+				else
+					sendClientResponse(randOne, randTwo, true)
+			
 	# show random result for both questions
 	if req.query.randomize is 'true'
 		console.log "true"
