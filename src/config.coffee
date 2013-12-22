@@ -38,7 +38,14 @@ config = {
 			},
 			mongoUrl: 'mongodb://localhost/realize-change',
 			title: 'Realize Change',
-			subtitle: 'Let’s dream together...'
+			subtitle: 'Let’s dream together...',
+			info: {
+				answers: "Please enter one dream and one goal that you have for the future. They do not have to be related.",
+				seeanswers: 'Click on "All Dreams" to see all the dreams',
+				rank: "Vote for the goal that you prefer. If you do not like either of them, vote for the lesser of two evils.",
+				results: "These are the results from the Vote4Change section. Use the icons to sort the list based on vote totals",
+				mission: "This is more information about our project"
+			}
 			# initialAnswers: seedData
 		}
 	development:
@@ -52,7 +59,14 @@ config = {
 			},
 			mongoUrl: 'mongodb://localhost/realize-change',
 			title: 'Realize Change',
-			subtitle: 'Let’s dream together...'
+			subtitle: 'Let’s dream together...',
+			info: {
+				answers: "Please enter one dream and one goal that you have for the future. They do not have to be related.",
+				seeanswers: 'Click on "All Dreams" to see all the dreams',
+				rank: "Vote for the goal that you prefer. If you do not like either of them, vote for the lesser of two evils.",
+				results: "These are the results from the Vote4Change section. Use the icons to sort the list based on vote totals",
+				mission: "This is more information about our project"
+			}
 			# initialAnswers: seedData
 		}
 }
