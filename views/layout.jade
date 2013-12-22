@@ -8,6 +8,7 @@ html
 		meta(name='author', content='')
 		link(href='//bootswatch.com/yeti/bootstrap.min.css', rel='stylesheet', media='screen')
 		link(href='css/font-awesome/css/font-awesome.min.css', rel='stylesheet', media='screen')
+		link(href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", rel="stylesheet", media="screen")
 		if global.process.env.NODE_ENV == 'production'
 			link(href='css/main.min.css', rel='stylesheet', media='screen')
 			link(href='css/answers.min.css', rel='stylesheet', media='screen')
@@ -43,7 +44,7 @@ html
 					ul.nav.navbar-nav
 						each link in links
 							- var isActive = (link.path == current ? 'active' : '')
-							li(class = '#{isActive}')
+							li(class = '#{isActive}', title="#{link.tooltip}")
 								
 								a(href='#{link.path}')
 									i.fa(class="#{link.icon}")
@@ -92,11 +93,7 @@ html
 
 
 				.container
-						//- div.pull-left#example1
-
-						//- #twitter(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="Tweet")
-						//- #facebook(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="Like")
-						//- #googleplus(data-url="http://realizechange.herokuapp.com/", data-text="Realize Change: Let's dream together", data-title="+1")
+						
 						form.pull-right(action="https://www.paypal.com/cgi-bin/webscr",method="post",target="_top")
 							input(type="hidden",name="cmd",value="_s-xclick")
 							input(type="hidden",name="hosted_button_id",value="MZ8TYAL3NBYVJ")
@@ -122,7 +119,6 @@ html
 									option(value="50-65") 50-65
 									option(value="65+") 65 and over
 
-					
 								br
 								label(for="country") Country:
 								select#country(name='country')
@@ -394,7 +390,11 @@ html
 		block modals
 
 		block pageScripts
-		script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+		//- script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+		script(src="//code.jquery.com/jquery-1.10.2.js")
+		script(src="//code.jquery.com/ui/1.10.3/jquery-ui.js")
+		//- script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+		//- script(src="//code.jquery.com/ui/1.10.3/jquery-ui.js")
 		script(src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js")
 		script(src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js")
 		script(src="/js/sharrre.min.js")
@@ -403,24 +403,20 @@ html
 		script(type="text/javascript", src="https://www.google.com/jsapi")
 		script(type="text/javaScript", src="http://www.geoplugin.net/javascript.gp")
 
-		
 		if global.process.env.NODE_ENV == 'production'
 			script(src="js/lib/seeanswers.min.js")
 			script(src='js/lib/answers.min.js')
 			script(src='js/lib/rank.min.js')
 			script(src="js/lib/results.min.js")
-			script(src="js/lib/main.min.js")
 			script(src="js/lib/settings.min.js")
 			script(src="js/lib/socialshare.min.js")
+			script(src="js/lib/main.min.js")
 
 		else if global.process.env.NODE_ENV == 'development'
 			script(src="js/lib/seeanswers.js")
 			script(src='js/lib/answers.js')
 			script(src='js/lib/rank.js')
 			script(src="js/lib/results.js")
-			script(src="js/lib/main.js")
 			script(src="js/lib/settings.js")
 			script(src="js/lib/socialshare.js")
-		
-		
-
+			script(src="js/lib/main.js")

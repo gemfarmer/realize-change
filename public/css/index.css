@@ -24,3 +24,9 @@ label {
 	width:800px;
 }
 
+#tooltip{
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border:1px solid #727272;
+}

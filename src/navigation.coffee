@@ -2,11 +2,11 @@
 
 links = [
 	
-	{ label: 'Begin Dreaming', key: 'answers', path: '/answers', icon: 'fa-cloud'},
-	{ label: 'Dreams', key: 'seeanswers', path: '/seeanswers', icon: 'fa-globe'},
-	{ label: 'Vote4Change', key: 'rank', path: '/rank', icon: 'fa-thumbs-o-up'},
-	{ label: 'Results', key: 'results', path: '/results', icon: 'fa-flag-checkered'},
-	{ label: 'About Us', key: 'mission', path: '/mission', icon: 'fa-info-circle'},
+	{ label: 'Begin Dreaming', key: 'answers', path: '/answers', icon: 'fa-cloud', tooltip: "Share your dreams with world"},
+	{ label: 'Dreams', key: 'seeanswers', path: '/seeanswers', icon: 'fa-globe', tooltip: "See other people's dreams"},
+	{ label: 'Vote4Change', key: 'rank', path: '/rank', icon: 'fa-thumbs-o-up', tooltip: "Vote on goals for the future"},
+	{ label: 'Results', key: 'results', path: '/results', icon: 'fa-flag-checkered', tooltip: "Voting results and data visualization"},
+	{ label: 'About Us', key: 'mission', path: '/mission', icon: 'fa-info-circle', tooltip: "See what we're all about"},
 
 ];
 
