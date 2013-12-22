@@ -6,7 +6,7 @@ links = [
 	{ label: 'Dreams', key: 'seeanswers', path: '/seeanswers', icon: 'fa-globe', tooltip: "See other people's dreams"},
 	{ label: 'Vote4Change', key: 'rank', path: '/rank', icon: 'fa-thumbs-o-up', tooltip: "Vote on goals for the future"},
 	{ label: 'Results', key: 'results', path: '/results', icon: 'fa-flag-checkered', tooltip: "Voting results"},
-	{ label: 'About Us', key: 'mission', path: '/mission', icon: 'fa-info-circle', tooltip: "See what we're all about"},
+	{ label: 'About Us', key: 'mission', path: '/mission', icon: 'fa-info-circle', tooltip: "See what we're all about"}
 
 ];
 

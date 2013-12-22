@@ -36,6 +36,8 @@ exports.answers = (req, res) ->
 	renderObj = {}
 	renderObj.title = app.locals.config.title
 	renderObj.subtitle =  app.locals.config.subtitle
+	renderObj.info = "Please enter one dream and one goal that you have for the future. They do not have to be related."
+
 
 	# conditional fixes login 'property name of undefined' error. not permanent
 	# console.log("requasdfasdf", req.headers['x-forwarded-for'], req.connection.remoteAddress)
@@ -64,6 +66,8 @@ exports.seeanswers = (req, res) ->
 	renderObj = {}
 	renderObj.title = app.locals.config.title
 	renderObj.subtitle =  app.locals.config.subtitle
+	renderObj.info = 'Click on "All Dreams" to see all the dreams'
+
 	
 	# conditional fixes login 'property name of undefined' error. not permanent
 	if req.user is undefined
@@ -77,6 +81,7 @@ exports.rank = (req, res) ->
 	renderObj = {}
 	renderObj.title = app.locals.config.title
 	renderObj.subtitle =  app.locals.config.subtitle
+	renderObj.info = "Vote for the goal that you prefer. If you do not like either of them, vote for the lesser of two evils."
 	
 	# conditional fixes login 'property name of undefined' error. not permanent
 	if req.user is undefined
@@ -91,6 +96,7 @@ exports.results = (req, res) ->
 	renderObj = {}
 	renderObj.title = app.locals.config.title
 	renderObj.subtitle =  app.locals.config.subtitle
+	renderObj.info = "These are the results from the Vote4Change section. Use the icons to sort the list based on vote totals"
 	
 	# conditional fixes login 'property name of undefined' error. not permanent
 	if req.user is undefined
@@ -101,10 +107,15 @@ exports.results = (req, res) ->
 
 exports.mission = (req,res) ->
 	req.session.redirectURL = req.url
+	renderObj = {}
+	renderObj.title = app.locals.config.title
+	renderObj.subtitle = app.locals.config.subtitle
+	renderObj.info = "This is more information about our project"
 	console.log("reached mission")
 	if req.user is undefined
-		res.render("partials/mission", { title: app.locals.config.title, subtitle: app.locals.config.subtitle});
+		res.render("partials/mission", renderObj);
 	else
-		res.render("partials/mission", { title: app.locals.config.title, subtitle: app.locals.config.subtitle, username: req.user.name});
+		renderObj.username = req.user.name
+		res.render("partials/mission", renderObj);
 
 
